@@ -1014,11 +1014,11 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>1</title></head><body><article class="markdown-body"><!-- #+ Title : 第一章
+</style><title>1</title></head><body><article class="markdown-body"><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<!-- #+ Title : 第一章
 #+ Author : maple5233
 #+ Date : 2016-10-05 -->
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 <h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一章</h2>
 <h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>因特网相关</h3>
@@ -1036,7 +1036,9 @@ body .markdown-body
 <li>
 <p>分组交换：主机与主机之间通过<strong>报文(message)</strong>通信，长的报文又会被分割成<strong>分组(packet、包)</strong></p>
 </li>
-<li><strong>存储转发机制</strong>：交换机在收到一整组报文之后才开始向输出链路输出</li>
+<li>
+<p><strong>存储转发机制</strong>：交换机在收到一整组报文之后才开始向输出链路输出</p>
+</li>
 <li>
 <p>对于每一条输出链路分组交换机都有一个输出缓存，包必须在输出缓存里排队，这叫<strong>排队时延</strong>，一旦缓存占满，则会<strong>丢包</strong></p>
 </li>
@@ -1086,9 +1088,9 @@ body .markdown-body
 <p>分组交换中时延的分类</p>
 <ul>
 <li>处理时延：<strong>检查分组首部和决定将该分组导向何处</strong>所需要的时间是节点处理时延的一部分。其他因素包括检查比特级差错处理（通常是微秒级以下）等。在这之后，路由器将包引向通往路由器B链路之前的队列。</li>
-<li>排队时延：在队列中，当分组在链路缓存中等待传输时，它经受排队时延。到达组的分组数量是到达该队列的流量强度和性质的函数。实际的排队时延通常在毫秒到微秒级。</li>
-<li>传输时延：用L比特表示分组的长度，用R b/s表示从路由器A到路由器B的链路传输速率。传输时延是L/R。这是将所有分组比特推向链路所需要的时间。实际的传输时延通常在毫秒到微秒级。是包从路由器A中被推出去的时间。与两路由器的距离无关。</li>
-<li>传播时延：一旦一个比特被A推向链路，该比特需要向路由器B传播，从该链路的起点到路由器B的传播所需要的时间是传播时延。该比特以该链路的传播速率传播，其速率范围等于或略小于光速。传播时延等于两台路由器之间的距离除以传播速率，即传播时延是d/s，d是两台路由器间的距离，s是该链路的传播速率。传播时延在毫秒级。</li>
+<li>排队时延：在队列中，当分组在链路缓存中<strong>等待传输</strong>时，它经受排队时延。 到达组的分组数量是到达该队列的流量强度的函数。实际的排队时延通常在毫秒到微秒级。</li>
+<li>传输时延：用L比特表示分组的长度，用R b/s表示从路由器A到路由器B的链路传输速率。传输时延是L/R。这是<strong>将所有分组比特推向链路所需要的时间</strong>。实际的传输时延通常在毫秒到微秒级。是包从路由器A中被推出去的时间。与两路由器的距离无关。</li>
+<li>传播时延：一旦一个比特被A推向链路，该比特需要向路由器B传播，从该链路的<strong>起点到路由器B的传播所需要的时间</strong>是传播时延。该比特以该链路的传播速率传播，其速率范围等于或略小于光速。传播时延等于两台路由器之间的距离除以传播速率，即传播时延是d/s，d是两台路由器间的距离，s是该链路的传播速率。传播时延在毫秒级。</li>
 <li>传输时延可以看做是车队（包）过收费站（路由器）的时间，而传播时延可看作路上花费的时间。</li>
 <li>节点总时延 = 处理时延 + 排队时延 + 传输时延 + 传播时延 一般来说处理时延通常是微不足道的。</li>
 </ul>
@@ -1107,6 +1109,49 @@ body .markdown-body
 <p>端到端时延<br />
 假设源主机和目的主机之间有N-1台路由器，并且该网络是无拥塞(不排队)的。那么端到端时延为：\( d_{end-end} = N (d_{proc} + d_{trans} + d_{prop})\)</p>
 </li>
+<li>
+<p>吞吐量</p>
+<ul>
+<li>在如以太网路及封包无线电之类的电信网络之中，吞吐量或网络吞吐量是指于一通讯通道上单位时间能成功传递的平均资料量，资料可以于实体或逻辑链接上传递，或通过某个网络节点。吞吐量的单位通常表示为位元每秒（bit/s或bps），有时也可看到封包每秒或封包每时槽等单位。</li>
+<li>在因特网内表现为网速。</li>
 </ul>
-<hr />
-<p>此次阅读到P30</p></article></body></html>
+</li>
+<li>
+<p>因特网的协议栈</p>
+<ul>
+<li>应用层（<strong>信的格式</strong>）：应用程序的协议。<ul>
+<li>我们把应用层的信息称为报文。</li>
+<li>典型协议如<code>HTTP</code>、<code>FTP</code>、<code>SMTP(电邮)</code>、<code>DNS</code>。</li>
+</ul>
+</li>
+<li>运输层（<strong>平信还是挂号信</strong>）：在应用程序端点之间传输应用层报文的协议。<ul>
+<li>因特网中常用的有两个，即<code>TCP</code>和<code>UDP</code>。</li>
+<li>TCP：面向连接，分割长报文，拥塞控制机制，可靠传递，双方速率匹配。</li>
+<li>UDP：无连接。（啥也没有- -）</li>
+<li>处于运输层的分组叫做报文段(segement)</li>
+</ul>
+</li>
+<li>网络层（<strong>邮局</strong>）：负责将数据报(datagram，处于网络层的分组)从主机移动到另一主机，使两端能够互连且决定最佳路径。<ul>
+<li>从运输层拿到报文段和目标地址。然后进行<code>路由</code>。</li>
+<li>网络层的典型协议是<code>IP</code>协议，用来识别目标地址。</li>
+<li>另一典型协议是<code>网络控制消息协定（ICMP）</code>，它是IP的主要部分，一般不用于在两点间传输数据。它通常不由网络程序直接使用，除了<code>ping</code>和<code>traceroute</code>这两个特例。</li>
+</ul>
+</li>
+<li>链路层（<strong>快递员</strong>）：在两个网络实体之间提供数据链路连接的创建、维持和释放管理。<ul>
+<li>构成链路层的分组（称之数据帧或帧），并对帧定界、同步、收发顺序的控制。</li>
+<li>负责传输过程中的流量控制,差错检测和差错控制等方面。</li>
+<li>数据链路层中的数据封装是指：封装的数据信息中，包含了地址段和数据段等。地址段含有点对点发送节点和接收节点的地址（如MAC），控制段用来表示数格连接帧的类型，数据段包含实际要传输的数据。</li>
+<li>网络层将数据报下发给链路层，链路层传输后，上报给目标结点的网络层。</li>
+<li>典型协议：<code>异步传输模式（ATM）</code>、<code>帧中继（frame relay）</code>、<code>高级数据链路控制（HDLC）</code>。</li>
+<li>交换机、桥接器是本层设备。而集线器是物理层设备，不是数据链路层设备。</li>
+</ul>
+</li>
+<li>物理层（<strong>公路和车</strong>）：将一个比特一个比特移动。<ul>
+<li>典型协议如：<code>蓝牙协议</code>、<code>数字用户线路（DSL）</code>等等</li>
+<li>常见物理层设备：网卡、光纤、集线器 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul></article></body></html>
