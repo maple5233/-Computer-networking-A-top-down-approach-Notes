@@ -1014,199 +1014,186 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>1</title></head><body><article class="markdown-body"><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<!-- #+ Title : 第一章
-#+ Author : maple5233
-#+ Date : 2016-10-05 -->
-
-<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一章</h2>
-<h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>读书</h3>
-<ul>
-<li>
-<p>互联网中的设备称为主机(host)或者终端系统(end system)，包括客户端和服务器</p>
-<ul>
-<li>主机通过<strong>通信链路</strong>和<strong>分组交换机</strong>连接</li>
-<li><strong>路由器</strong>和<strong>链路层交换机</strong>都是分组交换机</li>
-</ul>
-</li>
-<li>
-<p><code>ISP</code>是因特网服务供应商 有不同层级</p>
-</li>
-<li>
-<p>分组交换：主机与主机之间通过<strong>报文(message)</strong>通信，长的报文又会被分割成<strong>分组(packet、包)</strong></p>
-</li>
-<li>
-<p><strong>存储转发机制</strong>：交换机在收到一整组报文之后才开始向输出链路输出</p>
-</li>
-<li>
-<p>对于每一条输出链路分组交换机都有一个输出缓存，包必须在输出缓存里排队，这叫<strong>排队时延</strong>，一旦缓存占满，则会<strong>丢包</strong></p>
-</li>
-<li>
-<p>在因特网中，IP地址的多级结构信息和路由器的<strong>转发表</strong>，决定了路由器拿到包之后往哪条链路送</p>
-</li>
-<li>
-<p>转发表是由路由选择协议自动设置的</p>
-</li>
-<li>
-<p>电路交换：另一种端与端通信手段，电话是这种手段的典型例子。特点是源和目标点建立起名副其实的连接，称为电路，这条路上的带宽全部为这个连接空出来。所以电路交换的速度非常可靠。</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">对比</th>
-<th align="center">电路交换</th>
-<th align="center">分组交换</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">实现</td>
-<td align="center">复杂，成本高</td>
-<td align="center">简单,成本低</td>
-</tr>
-<tr>
-<td align="center">可靠性</td>
-<td align="center">可靠</td>
-<td align="center">延时不可预测</td>
-</tr>
-<tr>
-<td align="center">利用率</td>
-<td align="center">低，有空闲浪费</td>
-<td align="center">高，可共享空闲资源</td>
-</tr>
-<tr>
-<td align="center">特点</td>
-<td align="center">专线专用</td>
-<td align="center">共享路由</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>分组交换中时延的分类</p>
-<ul>
-<li>处理时延：<strong>检查分组首部和决定将该分组导向何处</strong>所需要的时间是节点处理时延的一部分。其他因素包括检查比特级差错处理（通常是微秒级以下）等。在这之后，路由器将包引向通往路由器B链路之前的队列。</li>
-<li>排队时延：在队列中，当分组在链路缓存中<strong>等待传输</strong>时，它经受排队时延。 到达组的分组数量是到达该队列的流量强度的函数。实际的排队时延通常在毫秒到微秒级。</li>
-<li>传输时延：用L比特表示分组的长度，用R b/s表示从路由器A到路由器B的链路传输速率。传输时延是L/R。这是<strong>将所有分组比特推向链路所需要的时间</strong>。实际的传输时延通常在毫秒到微秒级。是包从路由器A中被推出去的时间。与两路由器的距离无关。</li>
-<li>传播时延：一旦一个比特被A推向链路，该比特需要向路由器B传播，从该链路的<strong>起点到路由器B的传播所需要的时间</strong>是传播时延。该比特以该链路的传播速率传播，其速率范围等于或略小于光速。传播时延等于两台路由器之间的距离除以传播速率，即传播时延是d/s，d是两台路由器间的距离，s是该链路的传播速率。传播时延在毫秒级。</li>
-<li>传输时延可以看做是车队（包）过收费站（路由器）的时间，而传播时延可看作路上花费的时间。</li>
-<li>节点总时延 = 处理时延 + 排队时延 + 传输时延 + 传播时延 一般来说处理时延通常是微不足道的。</li>
-</ul>
-</li>
-<li>
-<p>排队时延的特殊之处</p>
-<ul>
-<li>对于不同的分组（包）可能不一样（后到的可能要等先到的）</li>
-<li>取决于流量本身的特点（即突发还是平稳），包括流量到达该队列的速率、链路的传输速率和到达流量的性质</li>
-<li>令a表示分组到达队列的平均速率（每秒多少分组，pkt/s），假定所有包都是L b组成的，则比特到达队列的平均速率是La bps。而La/R被称为流量强度</li>
-<li>如果La/R &gt; 1，则比特到达队列的平均速率超过从该队列传输出去的速率。在这种不幸的情况下，队列的增加将趋近于无界，并且排队时延将趋向无穷大。因此，流量工程中设计系统时流量强度不能大于1。在因特网中，接近1时将容易发生丢包。</li>
-<li>第n个分组有(n-1)L/R的排队时延</li>
-</ul>
-</li>
-<li>
-<p>端到端时延<br />
-假设源主机和目的主机之间有N-1台路由器，并且该网络是无拥塞(不排队)的。那么端到端时延为：\( d_{end-end} = N (d_{proc} + d_{trans} + d_{prop})\)</p>
-</li>
-<li>
-<p>吞吐量</p>
-<ul>
-<li>在如以太网路及封包无线电之类的电信网络之中，吞吐量或网络吞吐量是指于一通讯通道上单位时间能成功传递的平均资料量，资料可以于实体或逻辑链接上传递，或通过某个网络节点。吞吐量的单位通常表示为位元每秒（bit/s或bps），有时也可看到封包每秒或封包每时槽等单位。</li>
-<li>在因特网内表现为网速。</li>
-</ul>
-</li>
-<li>
-<p>因特网的协议栈</p>
-<ul>
-<li>应用层（<strong>信的格式</strong>）：应用程序的协议。<ul>
-<li>我们把应用层的信息称为报文。</li>
-<li>典型协议如<code>HTTP</code>、<code>FTP</code>、<code>SMTP(电邮)</code>、<code>DNS</code>。</li>
-</ul>
-</li>
-<li>运输层（<strong>平信还是挂号信</strong>）：在应用程序端点之间传输应用层报文的协议。<ul>
-<li>因特网中常用的有两个，即<code>TCP</code>和<code>UDP</code>。</li>
-<li>TCP：面向连接，分割长报文，拥塞控制机制，可靠传递，双方速率匹配。</li>
-<li>UDP：无连接。（啥也没有- -）。</li>
-<li>处于运输层的分组叫做报文段(segement)</li>
-</ul>
-</li>
-<li>网络层（<strong>邮局</strong>）：负责将数据报(datagram，处于网络层的分组)从主机移动到另一主机，使两端能够互连且决定最佳路径。<ul>
-<li>从运输层拿到报文段和目标地址。然后进行<code>路由</code>。</li>
-<li>网络层的典型协议是<code>IP</code>协议，用来识别目标地址。</li>
-<li>另一典型协议是<code>网络控制消息协定（ICMP）</code>，它是IP的主要部分，一般不用于在两点间传输数据。它通常不由网络程序直接使用，除了<code>ping</code>和<code>traceroute</code>这两个特例。</li>
-</ul>
-</li>
-<li>链路层（<strong>快递员</strong>）：在两个网络实体之间提供数据链路连接的创建、维持和释放管理。<ul>
-<li>构成链路层的分组（称之数据帧或帧），并对帧定界、同步、收发顺序的控制。</li>
-<li>负责传输过程中的流量控制,差错检测和差错控制等方面。</li>
-<li>数据链路层中的数据封装是指：封装的数据信息中，包含了地址段和数据段等。地址段含有点对点发送节点和接收节点的地址（如<code>MAC</code>），控制段用来表示数格连接帧的类型，数据段包含实际要传输的数据。</li>
-<li>网络层将数据报下发给链路层，链路层传输后，上报给目标结点的网络层。</li>
-<li>典型协议：<code>异步传输模式（ATM）</code>、<code>帧中继（frame relay）</code>、<code>高级数据链路控制（HDLC）</code>。</li>
-<li>交换机、桥接器是本层设备。而集线器是物理层设备，不是数据链路层设备。</li>
-</ul>
-</li>
-<li>物理层（<strong>公路和车</strong>）：将一个比特一个比特移动。<ul>
-<li>典型协议如：<code>蓝牙协议</code>、<code>数字用户线路（DSL）</code>等等</li>
-<li>常见物理层设备：网卡、光纤、集线器 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>封装</p>
-<ul>
-<li>因特网协议栈自顶向下传输时，各层会将上层信息包装，上层信息包装为<code>有效载荷字段</code>，本层信息包装为<code>首部字段</code>。</li>
-<li>应用层报文 -&gt; 运输层报文段 -&gt; 网络层数据报 -&gt; 链路层帧</li>
-</ul>
-</li>
-<li>
-<p>因特网攻击举例</p>
+</style><title>答案1</title></head><body><article class="markdown-body"><h3 id="chapter-1-review-questions"><a name="user-content-chapter-1-review-questions" href="#chapter-1-review-questions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Chapter 1 Review Questions</h3>
 <ol>
-<li>用病毒和木马形成僵尸网络（肉鸡）。</li>
-<li>拒绝服务攻击，包括弱点攻击（攻击bug）、带宽洪泛（常见、常是分布式，砸流量使丢包和延时）、连接洪泛（伪造大量TCP连接）</li>
-<li>分组嗅探：抓包，窃取隐私。</li>
-<li>伪造分组：IP哄骗等等。</li>
-</ol>
-</li>
-</ul>
-<h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>习题</h2>
-<ul>
 <li>
-<p>P2<br />
-    第一个包到达花费<code>N*(L/R)</code>，然后每隔(L/R)就有一个包到达。所以总花费<code>N*(L/R) + (P-1)*(L/R) = (N+P-1)*(L/R)</code></p>
+<p>There is no difference. Throughout this text, the words “host” and “end system” are used interchangeably. End systems include PCs, workstations, Web servers, mail servers, PDAs, Internet-connected game consoles, etc.</p>
 </li>
 <li>
-<p>P3</p>
+<p>From Wikipedia: Diplomatic protocol is commonly described as a set of international courtesy rules. These well-established and time-honored rules have made it easier for nations and people to live and work together. Part of protocol has always been the acknowledgment of the hierarchical standing of all present. Protocol rules are based on the principles of civility.</p>
+</li>
+<li>
+<p>Standards are important for protocols so that people can create networking systems and products that interoperate.</p>
+</li>
+<li>
 <ol>
-<li>电路交换网。因为需要高可靠性，且程序长时间运行并高频地发送数据，并没有浪费。这样能较好地发挥电路交换网的特点，避开它的缺点。</li>
-<li>不需要。就算所有应用同时发送一个分组，还是有足够的容量，不会造成拥塞。</li>
+<li>Dial-up modem over telephone line: home; </li>
+<li>DSL over telephone line: home or small office; </li>
+<li>Cable to HFC: home; </li>
+<li>100 Mbps switched Ethernet: enterprise; </li>
+<li>Wifi (802.11):  home and enterprise: </li>
+<li>3G and 4G: wide-area wireless.</li>
 </ol>
 </li>
 <li>
-<p>P6</p>
-<ol>
-<li>m/s</li>
-<li>L/R</li>
-<li>m/s+L/R</li>
-<li>A的出口链路开始的地方，刚离开A</li>
-<li>在路上</li>
-<li>已经到B了</li>
-<li>m=L/R*s=536km</li>
-</ol>
+<p>HFC bandwidth is shared among the users. On the downstream channel, all packets emanate from a single source, namely, the head end. Thus, there are no collisions in the downstream channel.</p>
 </li>
 <li>
-<p>P14</p>
-<ol>
-<li>传输时延是L/R，排队时延是La/R*L/R*(1-La/R) 总时延是(I+1)L/(R*(1-I))</li>
-<li>略</li>
-</ol>
+<p>In most American cities, the current possibilities include: dial-up; DSL; cable modem; fiber-to-the-home.</p>
 </li>
 <li>
-<p>P15 </p>
+<p>Ethernet LANs have transmission rates of 10 Mbps, 100 Mbps, 1 Gbps and 10 Gbps. </p>
+</li>
+<li>
+<p>Today, Ethernet most commonly runs over twisted-pair copper wire. It also can run over fibers optic links.</p>
+</li>
+<li>
+<p>Dial up modems: up to 56 Kbps, bandwidth is dedicated; ADSL: up to 24 Mbps downstream and 2.5 Mbps upstream, bandwidth is dedicated; HFC, rates up to 42.8 Mbps and upstream rates of up to 30.7 Mbps, bandwidth is shared. FTTH: 2-10Mbps upload; 10-20 Mbps download; bandwidth is not shared.</p>
+</li>
+<li>
+<p>There are two popular wireless Internet access technologies today:</p>
+<p>a) Wifi (802.11) In a wireless LAN, wireless users transmit/receive packets to/from an  base station  (i.e., wireless access point) within a radius of few tens of meters. The base station is typically connected to the wired Internet and thus serves to connect wireless users to the wired network.</p>
+<p>b)3G and 4G wide-area wireless access networks.     In these systems, packets are transmitted over the same wireless infrastructure used for cellular telephony, with the base station thus being managed by a telecommunications provider. This provides wireless access to users within a     radius of tens of kilometers of the base station.</p>
+</li>
+<li>
+<p>At time t0 the sending host begins to transmit. At time t1 = L/R1, the sending host completes transmission and the entire packet is received at the router (no propagation delay). Because the router has the entire packet at time t1, it can begin to transmit the packet to the receiving host at time t1. At time t2 = t1 + L/R2, the router completes transmission and the entire packet is received at the receiving host (again, no propagation delay). Thus, the end-to-end delay is L/R1 + L/R2.</p>
+</li>
+<li>
+<p>A circuit-switched network can guarantee a certain amount of end-to-end bandwidth for the duration of a call. Most packet-switched networks today (including the Internet) cannot make any end-to-end guarantees for bandwidth. FDM requires sophisticated analog hardware to shift signal into appropriate frequency bands.</p>
+</li>
+<li>
+<p>list:<br />
+    (a) 2 users can be supported because each user requires half of the link bandwidth.</p>
+<p>(b) Since each user requires 1Mbps when transmitting, if two or fewer users transmit    simultaneously, a maximum of 2Mbps will be required. Since the available    bandwidth of the shared link is 2Mbps, there will be no queuing delay before the    link. Whereas, if three users   transmit simultaneously, the bandwidth required     will be 3Mbps which is more than the available bandwidth of the shared link. In     this case, there will be queuing delay before the link.</p>
+<p>(c) Probability that a given user is transmitting = 0.2</p>
+<p>(d)  Probability that all three users are transmitting simultaneously = <br />
+= (0.2)3 = 0.008. Since the queue grows when all the users are transmitting, the    fraction of time during which the queue grows (which is equal to the probability    that all three users are transmitting simultaneously) is 0.008. </p>
+</li>
+<li>
+<p>If the two ISPs do not peer with each other, then when they send traffic to each other they have to send the traffic through a provider ISP (intermediary), to which they have to pay for carrying the traffic. By peering with each other directly, the two ISPs can reduce their payments to their provider ISPs. An Internet Exchange Points (IXP)  (typically in a standalone building with its own switches) is a  meeting point where multiple ISPs can connect and/or peer together. An ISP earns its money by charging each of the the ISPs that connect to the IXP a relatively small fee, which may depend on the amount of traffic sent to or received from the IXP.</p>
+</li>
+<li>
+<p>Google&rsquo;s private network connects together all its data centers, big and small. Traffic between the Google data centers passes over its private network rather than over the public Internet. Many of these data centers are located in, or close to, lower tier ISPs. Therefore, when Google delivers content to a user, it often can bypass higher tier ISPs. What motivates content providers to create these networks? First, the content provider has more control over the user experience, since it has to use few intermediary ISPs. Second, it can save money by sending less traffic into provider networks. Third, if ISPs decide to charge more money to highly profitable content providers  (in countries where net neutrality doesn&rsquo;t apply), the content providers can avoid these extra payments. </p>
+</li>
+<li>
+<p>The delay components are processing delays, transmission delays, propagation delays, and queuing delays. All of these delays are fixed, except for the queuing delays, which are variable.</p>
+</li>
+<li>
+<p>a) 1000 km, 1 Mbps, 100 bytes<br />
+    b) 100 km, 1 Mbps, 100 bytes</p>
+</li>
+<li>
+<p>10msec; d/s; no; no</p>
+</li>
+<li>
+<p>a) 500 kbps<br />
+    b) 64 seconds<br />
+    c) 100kbps; 320 seconds</p>
+</li>
+<li>
+<p>End system A breaks the large file into chunks. It adds header to each chunk, thereby generating multiple packets from the file. The header in each packet includes the IP address of the destination (end system B). The packet switch uses the destination IP address in the packet to determine the outgoing link. Asking which road to take is analogous to a packet asking which outgoing link it should be forwarded on, given the packet’s destination address.</p>
+</li>
+<li>
+<p>The maximum emission rate is 500 packets/sec and the maximum transmission rate is <br />
+350 packets/sec. The corresponding traffic intensity is 500/350 =1.43 &gt; 1. Loss will     eventually occur for each experiment; but the time when loss first occurs will be different from one experiment to the next due to the randomness in the emission process.</p>
+</li>
+<li>
+<p>Five generic tasks are error control, flow control, segmentation and reassembly, multiplexing, and connection setup. Yes, these tasks can be duplicated at different layers. For example, error control is often provided at more than one layer.</p>
+</li>
+<li>
+<p>The five layers in the Internet protocol stack are – from top to bottom – the application layer, the transport layer, the network layer, the link layer, and the physical layer. The principal responsibilities are outlined in Section 1.5.1.</p>
+</li>
+<li>
+<p>Application-layer message: data which an application wants to send and passed onto the transport layer; transport-layer segment: generated by the transport layer and encapsulates application-layer message with transport layer header; network-layer datagram: encapsulates transport-layer segment with a network-layer header; link-layer frame: encapsulates network-layer datagram with a link-layer header.</p>
+</li>
+<li>
+<p>Routers process network, link and physical layers (layers 1 through 3). (This is a little bit of a white lie, as modern routers sometimes act as firewalls or caching components, and process Transport layer as well.) Link layer switches process link and physical layers (layers 1 through2). Hosts process all five layers.</p>
+</li>
+<li>
+<p>a) Virus <br />
+    Requires some form of human interaction to spread. Classic example: E-mail     viruses.<br />
+    b) Worms<br />
+    No user replication needed. Worm in infected host scans IP addresses and port   numbers, looking for vulnerable processes to infect.</p>
+</li>
+<li>
+<p>Creation of a botnet requires an attacker to find vulnerability in some application or system (e.g. exploiting the buffer overflow vulnerability that might exist in an application). After finding the vulnerability, the attacker needs to scan for hosts that are vulnerable. The target is basically to compromise a series of systems by exploiting that particular vulnerability.  Any system that is part of the botnet can automatically scan its environment and propagate by exploiting the vulnerability. An important property of such botnets is that the originator of the botnet can remotely control and issue commands to all the nodes in the botnet. Hence, it becomes possible for the attacker to issue a command to all the nodes, that target a single node (for example, all nodes in the botnet might be commanded by the attacker to send a TCP SYN message to the target, which might result in a TCP SYN flood attack at the target). </p>
+</li>
+<li>
+<p>Trudy can pretend to be Bob to Alice (and vice-versa) and partially or completely modify the message(s) being sent from Bob to Alice. For example, she can easily change the phrase “Alice, I owe you $1000” to “Alice, I owe you $10,000”. Furthermore, Trudy can even drop the packets that are being sent by Bob to Alice (and vise-versa), even if the packets from Bob to Alice are encrypted. </p>
+</li>
+</ol>
+<h2 id="chapter-1-problems"><a name="user-content-chapter-1-problems" href="#chapter-1-problems" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Chapter 1 Problems</h2>
 <ul>
-<li>假设分组长度L，带宽是R，则I=La/R μ=R/L </li>
-<li>(I+1)L/(R*(1-I)) = (a+μ-1)/(u*(μ-1))</li>
-</ul>
+<li>
+<p>Problem 1</p>
+<p>There is no single right answer to this question.  Many protocols would do the trick.  Here&rsquo;s a simple answer below:</p>
+<p>Messages from ATM machine to Server<br />
+Msg name    purpose<br />
+--------    -------<br />
+HELO <userid>   Let server know that there is a card in the ATM machine<br />
+    ATM card transmits user ID to Server<br />
+PASSWD <passwd> User enters PIN, which is sent to server<br />
+BALANCE User requests balance<br />
+WITHDRAWL <amount>  User asks to withdraw money<br />
+BYE user all done</p>
+<p>Messages from Server to ATM machine (display)<br />
+Msg name    purpose<br />
+--------    -------<br />
+PASSWD  Ask user for PIN (password)<br />
+OK  last requested operation (PASSWD, WITHDRAWL) OK<br />
+ERR last requested operation (PASSWD, WITHDRAWL) in ERROR<br />
+AMOUNT <amt>    sent in response to BALANCE request<br />
+BYE user done, display welcome screen at ATM</p>
+<p>Correct operation:</p>
+<p>client                          server</p>
+<p>HELO (userid)   --------------&gt; (check if valid userid)<br />
+    &lt;-------------  PASSWD<br />
+PASSWD <passwd> --------------&gt; (check password)<br />
+    &lt;-------------  OK (password is OK)<br />
+BALANCE --------------&gt;<br />
+    &lt;-------------  AMOUNT <amt><br />
+WITHDRAWL <amt> --------------&gt; check if enough $ to cover              withdrawl<br />
+    &lt;-------------  OK<br />
+ATM dispenses $<br />
+BYE --------------&gt;<br />
+    &lt;-------------  BYE</p>
+<p>In situation when there&rsquo;s not enough money:</p>
+<p>HELO (userid)   --------------&gt; (check if valid userid)<br />
+    &lt;-------------  PASSWD<br />
+PASSWD <passwd> --------------&gt; (check password)<br />
+    &lt;-------------  OK (password is OK)<br />
+BALANCE --------------&gt;<br />
+    &lt;-------------  AMOUNT <amt><br />
+WITHDRAWL <amt> --------------&gt; check if enough $ to cover withdrawl<br />
+    &lt;-------------  ERR (not enough funds)<br />
+error msg displayed<br />
+no $ given out<br />
+BYE --------------&gt;<br />
+            &lt;-------------  BYE</p>
+</li>
+<li>
+<p>Problem 2 <br />
+    At time N*(L/R) the first packet has reached the destination, the second packet is stored in the last router, the third packet is stored in the next-to-last router, etc. At time N*(L/R) + L/R, the second packet has reached the destination, the third packet is stored in the last router, etc. Continuing with this logic, we see that at time N*(L/R) + (P-1)*(L/R) = (N+P-1)*(L/R) all packets have reached the destination. </p>
+</li>
+<li>
+<p>Problem 3 </p>
+<p>a) A circuit-switched network would be well suited to the application, because the application involves long sessions with predictable smooth bandwidth requirements. Since the transmission rate is known and not bursty, bandwidth can be reserved for each application session without significant waste. In addition, the overhead costs of setting up and tearing down connections are amortized over the lengthy duration of a typical application session.</p>
+<p>b) In the worst case, all the applications simultaneously transmit over one or more network links. However, since each link has sufficient bandwidth to handle the sum of all of the applications&rsquo; data rates, no congestion (very little queuing) will occur. Given such generous link capacities, the network does not need congestion control mechanisms.</p>
+</li>
+<li>
+<p>Problem 4</p>
+<p>a)Between the switch in the upper left and the switch in the upper right we can have 4 connections. Similarly we can have four connections between each of the 3 other pairs of adjacent switches. Thus, this network can support up to 16 connections. </p>
+<p>b)We can 4 connections passing through the switch in the upper-right-hand corner and another 4 connections passing through the switch in the lower-left-hand corner, giving a total of 8 connections. <br />
+c)Yes. For the connections between A and C, we route two connections through B and two connections through D. For the connections between B and D, we route two connections through A and two connections through C. In this manner, there are at most 4 connections passing through any link. </p>
+</li>
+<li>
+<p>Problem 5</p>
+<p>Tollbooths are 75 km apart, and the cars propagate at 100km/hr. A tollbooth services a car at a rate of one car every 12 seconds.</p>
+<p>a) There are ten cars. It takes 120 seconds, or 2 minutes, for the first tollbooth to service the 10 cars. Each of these cars has a propagation delay of 45 minutes (travel 75 km) before arriving at the second tollbooth. Thus, all the cars are lined up before the second tollbooth after 47 minutes. The whole process repeats itself for traveling between the second and third tollbooths. It also takes 2 minutes for the third tollbooth to service the 10 cars. Thus the total delay is 96 minutes.</p>
+<p>b) Delay between tollbooths is 8*12 seconds plus 45 minutes, i.e., 46 minutes and 36 seconds. The total delay is twice this amount plus 8*12 seconds, i.e., 94 minutes and 48 seconds.  </p>
+</li>
+<li>
+<p>Problem 6-31<br />
+    (See Solutions6thEdition.doc)</p>
 </li>
 </ul></article></body></html>
