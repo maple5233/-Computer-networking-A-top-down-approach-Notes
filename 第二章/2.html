@@ -1,1233 +1,217 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
-  width: 45em;
-  border: 1px solid #ddd;
-  outline: 1300px solid #fff;
-  margin: 16px auto;
-}
-
-body .markdown-body
-{
-  padding: 30px;
-}
-
-@font-face {
-  font-family: fontawesome-mini;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
-
-@font-face {
-  font-family: octicons-anchor;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
-
-.markdown-body {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  color: #333333;
-  overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
-}
-
-.markdown-body a {
-  background: transparent;
-}
-
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline: 0;
-}
-
-.markdown-body b,
-.markdown-body strong {
-  font-weight: bold;
-}
-
-.markdown-body mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body sub,
-.markdown-body sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-.markdown-body sup {
-  top: -0.5em;
-}
-.markdown-body sub {
-  bottom: -0.25em;
-}
-
-.markdown-body h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-.markdown-body img {
-  border: 0;
-}
-
-.markdown-body hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
-
-.markdown-body pre {
-  overflow: auto;
-}
-
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-.markdown-body input {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-.markdown-body html input[disabled] {
-  cursor: default;
-}
-
-.markdown-body input {
-  line-height: normal;
-}
-
-.markdown-body input[type="checkbox"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.markdown-body table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
-
-.markdown-body .codehilitetable {
-  border: 0;
-  border-spacing: 0;
-}
-
-.markdown-body .codehilitetable tr {
-  border: 0;
-}
-
-.markdown-body .codehilitetable pre,
-.markdown-body .codehilitetable div.codehilite {
-  margin: 0;
-}
-
-.markdown-body .linenos,
-.markdown-body .code,
-.markdown-body .codehilitetable td {
-  border: 0;
-  padding: 0;
-}
-
-.markdown-body td:not(.linenos) .linenodiv {
-  padding: 0 !important;
-}
-
-.markdown-body .code {
-  width: 100%;
-}
-
-.markdown-body .linenos div pre,
-.markdown-body .linenodiv pre,
-.markdown-body .linenodiv {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-topleft: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.markdown-body .code div pre,
-.markdown-body .code div {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.markdown-body * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body input {
-  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.4;
-}
-
-.markdown-body a {
-  color: #4183c4;
-  text-decoration: none;
-}
-
-.markdown-body a:hover,
-.markdown-body a:focus,
-.markdown-body a:active {
-  text-decoration: underline;
-}
-
-.markdown-body hr {
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.markdown-body hr:before,
-.markdown-body hr:after {
-  display: table;
-  content: " ";
-}
-
-.markdown-body hr:after {
-  clear: both;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-}
-
-.markdown-body h1 {
-  font-size: 30px;
-}
-
-.markdown-body h2 {
-  font-size: 21px;
-}
-
-.markdown-body h3 {
-  font-size: 16px;
-}
-
-.markdown-body h4 {
-  font-size: 14px;
-}
-
-.markdown-body h5 {
-  font-size: 12px;
-}
-
-.markdown-body h6 {
-  font-size: 11px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body code,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body kbd {
-  background-color: #e7e7e7;
-  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
-  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
-  background-image: linear-gradient(#fefefe, #e7e7e7);
-  background-repeat: repeat-x;
-  border-radius: 2px;
-  border: 1px solid #cfcfcf;
-  color: #000;
-  padding: 3px 5px;
-  line-height: 10px;
-  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  display: inline-block;
-}
-
-.markdown-body>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body .headeranchor-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px;
-}
-
-.markdown-body .headeranchor-link:focus {
-  outline: none;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.markdown-body h1 .headeranchor,
-.markdown-body h2 .headeranchor,
-.markdown-body h3 .headeranchor,
-.markdown-body h4 .headeranchor,
-.markdown-body h5 .headeranchor,
-.markdown-body h6 .headeranchor {
-  display: none;
-  color: #000;
-  vertical-align: middle;
-}
-
-.markdown-body h1:hover .headeranchor-link,
-.markdown-body h2:hover .headeranchor-link,
-.markdown-body h3:hover .headeranchor-link,
-.markdown-body h4:hover .headeranchor-link,
-.markdown-body h5:hover .headeranchor-link,
-.markdown-body h6:hover .headeranchor-link {
-  height: 1em;
-  padding-left: 8px;
-  margin-left: -30px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .headeranchor-link .headeranchor,
-.markdown-body h2:hover .headeranchor-link .headeranchor,
-.markdown-body h3:hover .headeranchor-link .headeranchor,
-.markdown-body h4:hover .headeranchor-link .headeranchor,
-.markdown-body h5:hover .headeranchor-link .headeranchor,
-.markdown-body h6:hover .headeranchor-link .headeranchor {
-  display: inline-block;
-}
-
-.markdown-body h1 {
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h2 {
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h3 {
-  font-size: 1.5em;
-  line-height: 1.43;
-}
-
-.markdown-body h4 {
-  font-size: 1.25em;
-}
-
-.markdown-body h5 {
-  font-size: 1em;
-}
-
-.markdown-body h6 {
-  font-size: 1em;
-  color: #777;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre,
-.markdown-body .admonition {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body hr {
-  height: 4px;
-  padding: 0;
-  margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 2em;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li>p {
-  margin-top: 16px;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote {
-  padding: 0 15px;
-  color: #777;
-  border-left: 4px solid #ddd;
-}
-
-.markdown-body blockquote>:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote>:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  word-break: normal;
-  word-break: keep-all;
-}
-
-.markdown-body table th {
-  font-weight: bold;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #ddd;
-}
-
-.markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-.markdown-body img {
-  max-width: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body code,
-.markdown-body samp {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
-}
-
-.markdown-body code:before,
-.markdown-body code:after {
-  letter-spacing: -0.2em;
-  content: "\00a0";
-}
-
-.markdown-body pre>code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .codehilite {
-  margin-bottom: 16px;
-}
-
-.markdown-body .codehilite pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px;
-}
-
-.markdown-body .codehilite pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body pre {
-  word-wrap: normal;
-}
-
-.markdown-body pre code {
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body pre code:before,
-.markdown-body pre code:after {
-  content: normal;
-}
-
-/* Admonition */
-.markdown-body .admonition {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  position: relative;
-  border-radius: 3px;
-  border: 1px solid #e0e0e0;
-  border-left: 6px solid #333;
-  padding: 10px 10px 10px 30px;
-}
-
-.markdown-body .admonition table {
-  color: #333;
-}
-
-.markdown-body .admonition p {
-  padding: 0;
-}
-
-.markdown-body .admonition-title {
-  font-weight: bold;
-  margin: 0;
-}
-
-.markdown-body .admonition>.admonition-title {
-  color: #333;
-}
-
-.markdown-body .attention>.admonition-title {
-  color: #a6d796;
-}
-
-.markdown-body .caution>.admonition-title {
-  color: #d7a796;
-}
-
-.markdown-body .hint>.admonition-title {
-  color: #96c6d7;
-}
-
-.markdown-body .danger>.admonition-title {
-  color: #c25f77;
-}
-
-.markdown-body .question>.admonition-title {
-  color: #96a6d7;
-}
-
-.markdown-body .note>.admonition-title {
-  color: #d7c896;
-}
-
-.markdown-body .admonition:before,
-.markdown-body .attention:before,
-.markdown-body .caution:before,
-.markdown-body .hint:before,
-.markdown-body .danger:before,
-.markdown-body .question:before,
-.markdown-body .note:before {
-  font: normal normal 16px fontawesome-mini;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  line-height: 1.5;
-  color: #333;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-.markdown-body .admonition:before {
-  content: "\f056\00a0";
-  color: 333;
-}
-
-.markdown-body .attention:before {
-  content: "\f058\00a0";
-  color: #a6d796;
-}
-
-.markdown-body .caution:before {
-  content: "\f06a\00a0";
-  color: #d7a796;
-}
-
-.markdown-body .hint:before {
-  content: "\f05a\00a0";
-  color: #96c6d7;
-}
-
-.markdown-body .danger:before {
-  content: "\f057\00a0";
-  color: #c25f77;
-}
-
-.markdown-body .question:before {
-  content: "\f059\00a0";
-  color: #96a6d7;
-}
-
-.markdown-body .note:before {
-  content: "\f040\00a0";
-  color: #d7c896;
-}
-
-.markdown-body .admonition::after {
-  content: normal;
-}
-
-.markdown-body .attention {
-  border-left: 6px solid #a6d796;
-}
-
-.markdown-body .caution {
-  border-left: 6px solid #d7a796;
-}
-
-.markdown-body .hint {
-  border-left: 6px solid #96c6d7;
-}
-
-.markdown-body .danger {
-  border-left: 6px solid #c25f77;
-}
-
-.markdown-body .question {
-  border-left: 6px solid #96a6d7;
-}
-
-.markdown-body .note {
-  border-left: 6px solid #d7c896;
-}
-
-.markdown-body .admonition>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body .admonition>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* progress bar*/
-.markdown-body .progress {
-  display: block;
-  width: 300px;
-  margin: 10px 0;
-  height: 24px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #ededed;
-  position: relative;
-  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
-}
-
-.markdown-body .progress-label {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  width: 100%; margin: 0;
-  line-height: 24px;
-  color: #333;
-  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
-  -webkit-font-smoothing: antialiased !important;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.markdown-body .progress-bar {
-  height: 24px;
-  float: left;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #96c6d7;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
-  background-size: 30px 30px;
-  background-image: -webkit-linear-gradient(
-    135deg, rgba(255, 255, 255, .4) 27%,
-    transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%,
-    transparent 77%, transparent
-  );
-  background-image: -moz-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -ms-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -o-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-}
-
-.markdown-body .progress-100plus .progress-bar {
-  background-color: #a6d796;
-}
-
-.markdown-body .progress-80plus .progress-bar {
-  background-color: #c6d796;
-}
-
-.markdown-body .progress-60plus .progress-bar {
-  background-color: #d7c896;
-}
-
-.markdown-body .progress-40plus .progress-bar {
-  background-color: #d7a796;
-}
-
-.markdown-body .progress-20plus .progress-bar {
-  background-color: #d796a6;
-}
-
-.markdown-body .progress-0plus .progress-bar {
-  background-color: #c25f77;
-}
-
-.markdown-body .candystripe-animate .progress-bar{
-  -webkit-animation: animate-stripes 3s linear infinite;
-  -moz-animation: animate-stripes 3s linear infinite;
-  animation: animate-stripes 3s linear infinite;
-}
-
-@-webkit-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@-moz-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-.markdown-body .gloss .progress-bar {
-  box-shadow:
-    inset 0 4px 12px rgba(255, 255, 255, .7),
-    inset 0 -12px 0 rgba(0, 0, 0, .05);
-}
-
-/* Multimarkdown Critic Blocks */
-.markdown-body .critic_mark {
-  background: #ff0;
-}
-
-.markdown-body .critic_delete {
-  color: #c82829;
-  text-decoration: line-through;
-}
-
-.markdown-body .critic_insert {
-  color: #718c00 ;
-  text-decoration: underline;
-}
-
-.markdown-body .critic_comment {
-  color: #8e908c;
-  font-style: italic;
-}
-
-.markdown-body .headeranchor {
-  font: normal normal 16px octicons-anchor;
-  line-height: 1;
-  display: inline-block;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.headeranchor:before {
-  content: '\f05c';
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item input {
-  margin: 0 4px 0.25em -20px;
-  vertical-align: middle;
-}
-
-/* Media */
-@media only screen and (min-width: 480px) {
-  .markdown-body {
-    font-size:14px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .markdown-body {
-    font-size:16px;
-  }
-}
-
-@media print {
-  .markdown-body * {
-    background: transparent !important;
-    color: black !important;
-    filter:none !important;
-    -ms-filter: none !important;
-  }
-
-  .markdown-body {
-    font-size:12pt;
-    max-width:100%;
-    outline:none;
-    border: 0;
-  }
-
-  .markdown-body a,
-  .markdown-body a:visited {
-    text-decoration: underline;
-  }
-
-  .markdown-body .headeranchor-link {
-    display: none;
-  }
-
-  .markdown-body a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  .markdown-body abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  .markdown-body .ir a:after,
-  .markdown-body a[href^="javascript:"]:after,
-  .markdown-body a[href^="#"]:after {
-    content: "";
-  }
-
-  .markdown-body pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  .markdown-body pre,
-  .markdown-body blockquote {
-    border: 1px solid #999;
-    padding-right: 1em;
-    page-break-inside: avoid;
-  }
-
-  .markdown-body .progress,
-  .markdown-body .progress-bar {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-
-  .markdown-body .progress {
-    border: 1px solid #ddd;
-  }
-
-  .markdown-body .progress-bar {
-    height: 22px;
-    border-right: 1px solid #ddd;
-  }
-
-  .markdown-body tr,
-  .markdown-body img {
-    page-break-inside: avoid;
-  }
-
-  .markdown-body img {
-    max-width: 100% !important;
-  }
-
-  .markdown-body p,
-  .markdown-body h2,
-  .markdown-body h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  .markdown-body h2,
-  .markdown-body h3 {
-    page-break-after: avoid;
-  }
-}
-</style><title>2</title></head><body><article class="markdown-body"><h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用层协议</h1>
-<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用层协议的结构与分类应用</h2>
-<ul>
-<li>应用程序体系结构包括<strong>客户端-服务器架构</strong>和<strong>P2P体系结构</strong></li>
-<li>客户端-服务器架构<ul>
-<li>发起通信的进程叫客户</li>
-<li>等待联系的进程叫服务器</li>
-<li>发送和接受报文的接口叫套接字</li>
-<li>通过IP来寻得主机，端口号区分主机上的不同应用程序</li>
-</ul>
-</li>
-</ul>
-<h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>因特网提供的运输服务</h2>
-<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>因特网应用需求</h3>
-<p><img alt="应用层协议对应的运输协议.png" src="/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E5%BA%94%E7%9A%84%E8%BF%90%E8%BE%93%E5%8D%8F%E8%AE%AE.png" /></p>
-<h3 id="tcp"><a name="user-content-tcp" href="#tcp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>TCP服务</h3>
-<h4 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>特点</h4>
-<ol>
-<li><strong>面向连接</strong>：发送报文之前经过三次握手，然后建立一条<strong>全双工</strong>连接，发送报文，再销毁连接</li>
-<li><strong>可靠</strong>：非常可靠，没有字节丢失和冗余</li>
-<li><strong>有拥塞机制</strong>：不一定给自己带来好处，但对整个网络环境友好</li>
-<li><code>TCP</code>不安全，但有自己的加强版——<code>SSL</code>协议</li>
-</ol>
-<h3 id="udp"><a name="user-content-udp" href="#udp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>UDP服务</h3>
-<h4 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>特点</h4>
-<ol>
-<li><strong>轻量级</strong>：最小化服务，最小化成本</li>
-<li>不可靠：可能发送包丢失和乱序</li>
-<li><strong>没有拥塞机制</strong>：可以以任何速率向网络层注入数据</li>
-</ol>
-<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>注意</h3>
-<p>不管是<code>UDP</code>还是<code>TCP</code>，都不提供弹性带宽（吞吐量）保证和时间敏感保证。</p>
-<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>对比</h3>
-<p><img alt="TCP与UDP.png" src="/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/TCP%E4%B8%8EUDP.png" /></p>
-<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用层支持的运输层表</h3>
-<p><img alt="应用层协议对应的运输协议.png" src="/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E5%BA%94%E7%9A%84%E8%BF%90%E8%BE%93%E5%8D%8F%E8%AE%AE.png" /></p>
-<h2 id="http"><a name="user-content-http" href="#http" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP协议</h2>
-<h3 id="web"><a name="user-content-web" href="#web" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一些web术语和基本概念、约定</h3>
-<ul>
-<li>web文档是由对象组成的。一个对象就是一个文件。对象一般由<code>URL</code>来定位。</li>
-<li>URL：统一资源定位符，主要由两部分组成：一部分是主机名，另一部分是对象们的路径名，是因特网上标准的资源的地址</li>
-</ul>
-<h3 id="http_1"><a name="user-content-http_1" href="#http_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP概况</h3>
-<ul>
-<li><code>HTTP</code>一般使用<code>TCP</code>作为传输层协议（但HTTP协议中并没有规定必须使用它或它支持的层）</li>
-<li><code>HTTP</code>是一个无状态协议：<code>HTTP</code>服务器不保存客户的任何信息。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
-<li><code>HTTP</code>是一个无连接协议：限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
-<li><code>HTTP</code>是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li>
-</ul>
-<h3 id="http_2"><a name="user-content-http_2" href="#http_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP非持久连接</h3>
-<ul>
-<li><code>HTTP</code> 0.9和1.0使用非持续连接</li>
-<li>在非持续连接下每个tcp只连接一个web对象，连接在每个请求回应对后都会关闭</li>
-</ul>
-<h3 id="http_3"><a name="user-content-http_3" href="#http_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP持久连接</h3>
-<ul>
-<li><code>HTTP</code> 1.1+默认使用持续连接 1.0要加<code>Keep-alive</code>相应头</li>
-<li>一个连接可被多个请求重复利用的保持连接机制被引入，显著地减少了请求延迟，因为客户不用在首次请求后再次进行TCP交互确认创建连接</li>
-<li>优点<ul>
-<li>较少的CPU和内存的使用（由于同时打开的连接的减少了）</li>
-<li>允许请求和应答的HTTP管线化</li>
-<li>降低网络阻塞 （TCP连接减少了）</li>
-<li>减少了后续请求的延迟（无需再进行握手）</li>
-<li>报告错误无需关闭TCP连接</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>对于现在的广泛普及的宽带连接来说，Keep-Alive也许并不像以前一样有用。web服务器会保持连接若干秒(Apache中默认15秒)，这与提高的性能相比也许会影响性能。</li>
-<li>对于单个文件被不断请求的服务(例如图片存放网站)，Keep-Alive可能会极大的影响性能，因为它在文件被请求之后还保持了不必要的连接很长时间。</li>
-</ul>
-</li>
-</ul>
-<h3 id="http_4"><a name="user-content-http_4" href="#http_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP请求报文格式</h3>
-<h4 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>请求报文</h4>
-<p>以下是一个典型的请求报文<br />
-<img alt="http请求报文1.png" src="/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/http%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%871.png" /></p>
-<p>可以解析为<br />
-<img alt="http请求报文2.png" src="/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/http%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%872.png" /></p>
-<h4 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>请求方法</h4>
-<ul>
-<li><code>GET</code>     请求获取Request-URI所标识的资源</li>
-<li><code>POST</code>        在Request-URI所标识的资源后附加新的数据</li>
-<li><code>HEAD</code>        请求获取由Request-URI所标识的资源的响应消息报头</li>
-<li><code>PUT</code>     请求服务器存储一个资源，并用Request-URI作为其标识</li>
-<li><code>DELETE</code>  请求服务器删除Request-URI所标识的资源</li>
-<li><code>TRACE</code>   请求服务器回送收到的请求信息，主要用于测试或诊断</li>
-<li><code>CONNECT</code> 保留将来使用</li>
-<li><code>OPTIONS</code> 请求查询服务器的性能，或者查询与资源相关的选项和需求</li>
-</ul>
-<h4 id="url"><a name="user-content-url" href="#url" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>请求URL</h4>
-<ul>
-<li>
-<p>统一资源定位符的标准格式如下：<br />
-协议类型://服务器地址（必要时需加上端口号）/路径/文件名  </p>
-</li>
-<li>
-<p>而<code>HTTP</code>的统一资源定位符将从因特网获取信息的五个基本元素包括在一个简单的地址中：<br />
-1. 传送协议(http/https)。<br />
-2. 服务器。（通常为域名，有时为IP地址）<br />
-3. 端口号。（以数字方式表示，若为HTTP的预设值“:80”可省略）<br />
-4. 路径。（以“/”字元区别路径中的每一个目录名称）<br />
-5. 查询字符串(query string)。（GET模式的表单参数，以“?”字元为起点，每个参数以“&amp;”隔开，再以“=”分开参数名称与资料，通常以UTF8的URL编码，避开字元冲突的问题）</p>
-</li>
-</ul>
-<h4 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>其他字段</h4>
-<ul>
-<li>Accept：浏览器可接受的MIME类型。</li>
-<li>Accept-Charset：浏览器可接受的字符集。</li>
-<li>Accept-Encoding：浏览器能够进行解码的数据编码方式，比如<code>gzip</code>。<code>Servlet</code>能够向支持<code>gzip</code>的浏览器返回经gzip编码的HTML页面。许多情形下这可以减少5到10倍的下载时间。</li>
-<li>Accept-Language：浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。</li>
-<li>Authorization：授权信息，通常出现在对服务器发送的WWW-Authenticate头的应答中。</li>
-<li>Connection：表示是否需要持久连接。HTTP1.1默认是<code>keep-alive</code></li>
-<li>Content-Length：表示请求消息正文的长度。</li>
-<li>Cookie：这是最重要的请求头信息之一</li>
-<li>From：请求发送者的email地址，由一些特殊的Web客户程序使用，浏览器不会用到它。</li>
-<li>Host：初始URL中的主机和端口。</li>
-<li>If-Modified-Since：只有当所请求的内容在指定的日期之后又经过修改才返回它，否则返回304“Not Modified”应答。</li>
-<li>Pragma：指定“no-cache”值表示服务器必须返回一个刷新后的文档，即使它是代理服务器而且已经有了页面的本地拷贝。</li>
-<li>Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。</li>
-<li>User-Agent：浏览器类型，如果Servlet返回的内容与浏览器类型有关则该值非常有用。</li>
-</ul>
-<h3 id="http_5"><a name="user-content-http_5" href="#http_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP响应报文形式</h3>
-<h4 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应答报文</h4>
-<p>HTTP响应由三个部分组成，分别是：状态行、消息报头、响应正文。以下是响应报文的基本形式：<br />
-<img alt="http响应.jpg" src="/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/http%E5%93%8D%E5%BA%94.jpg" /></p>
-<h4 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>状态行</h4>
-<p>状态行格式如下：<br />
-HTTP-Version Status-Code Reason-Phrase CRLF<br />
-其中：  </p>
-<ul>
-<li>HTTP-Version表示服务器HTTP协议的版本；</li>
-<li>Status-Code表示服务器发回的响应状态代码；</li>
-<li>Reason-Phrase表示状态代码的文本描述。</li>
-<li>CRLF是换行</li>
-</ul>
-<h4 id="_15"><a name="user-content-_15" href="#_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>响应码</h4>
-<p>状态代码有三位数字组成，第一个数字定义了响应的类别，且有五种可能取值：</p>
-<ul>
-<li>1xx：指示信息&ndash;表示请求已接收，继续处理<ul>
-<li>100 Continue 客户端应当继续发送请求的剩余部分。服务器必须在请求完成后向客户端发送一个最终响应。</li>
-<li>101 Switching Protocols 服务器已经理解请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最后的空行后，服务器将会切换到在Upgrade消息头中定义的那些协议。</li>
-</ul>
-</li>
-<li>2xx：成功&ndash;表示请求已被成功接收、理解、接受<ul>
-<li>204 No Content 服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。响应可能通过实体头部的形式，返回新的或更新后的元信息。</li>
-<li>206 Partial Content 服务器已经成功处理了部分GET请求。类似于FlashGet或者迅雷这类的HTTP 下载工具都是使用此类响应实现断点续传或者将一个大文档分解为多个下载段同时下载。该请求必须包含Range头信息来指示客户端希望得到的内容范围，并且可能包含If-Range来作为请求条件。</li>
-</ul>
-</li>
-<li>3xx：重定向&ndash;要完成请求必须进行更进一步的操作<ul>
-<li>300 Multiple Choices 被请求的资源有一系列可供选择的回馈信息，用户或浏览器能够自行选择一个首选的地址进行重定向。</li>
-<li>301 Moved Permanently 被请求的资源已永久移动到新位置，将来任何对此资源的引用都应使用本响应返回的若干个URI之一。</li>
-</ul>
-</li>
-<li>4xx：客户端错误&ndash;请求有语法错误或请求无法实现<ul>
-<li>400 Bad Request 由于包含语法错误，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。</li>
-<li>401 Unauthorized 当前请求需要用户验证。该响应必须包含一个WWW-Authenticate信息头用以询问用户信息。</li>
-<li>403 Forbidden 服务器已经理解请求，但是拒绝执行它。</li>
-<li>404 Not Found 请求失败，请求所希望得到的资源未被在服务器上发现。</li>
-<li>407 Proxy Authentication Required 与401响应类似，只不过客户端必须在代理服务器上进行身份验证。</li>
-<li>410 Gone 被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。这样的状况应当被认为是永久性的。</li>
-<li>421 There are too many connections from your internet address 从当前客户端所在的IP地址到服务器的连接数超过了服务器许可的最大范围</li>
-<li>426 Upgrade Required 客户端应当切换到TLS/1.0。</li>
-</ul>
-</li>
-<li>5xx：服务器端错误&ndash;服务器未能实现合法的请求<ul>
-<li>500 Internal Server Error 服务器遇到状况，无法完成对请求的处理。一般来说，这个问题都会在服务器的程序码出错时出现。</li>
-<li>501 Not Implemented 服务器无法识别请求的方法，并且无法支持其对任何资源的请求。</li>
-<li>502 Bad Gateway 作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</li>
-<li>503 Service Unavailable 由于临时的服务器维护或者过载，服务器当前无法处理请求。</li>
-<li>504 Gateway Timeout 作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。注意：某些代理服务器在DNS查询超时时会返回400或者500错误。</li>
-</ul>
-</li>
-</ul>
-<h4 id="_16"><a name="user-content-_16" href="#_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>消息报头</h4>
-<ul>
-<li>Location 响应报头域用于重定向接受者到一个新的位置。Location响应报头域常用在更换域名的时候。</li>
-<li>Server响应报头域包含了服务器用来处理请求的软件信息。与User-Agent请求报头域是相对应的。</li>
-<li>WWW-Authenticate 必须被包含在401（未授权的）响应消息中，客户端收到401响应消息时候，并发送Authorization报头域请求服务器对其进行验证时，服务端响应报头就包含该报头域。</li>
-<li>Content-Encoding 它的值指示了已经被应用到实体正文的附加内容的编码，因而要获得Content-Type报头域中所引用的媒体类型，必须采用相应的解码机制。Content-Encoding这样用于记录文档的压缩方法，eg：Content-Encoding：gzip</li>
-<li>Content-Language 实体报头域描述了资源所用的自然语言。没有设置该域则认为实体内容将提供给所有的语言阅读<br />
-者。</li>
-<li>Content-Length 实体报头域用于指明实体正文的长度，以字节方式存储的十进制数字来表示。</li>
-<li>Content-Type实体报头域用语指明发送给接收者的实体正文的媒体类型。</li>
-<li>Last-Modified实体报头域用于指示资源的最后修改日期和时间。</li>
-<li>Expires实体报头域给出响应过期的日期和时间。</li>
-</ul>
-<h2 id="ftp"><a name="user-content-ftp" href="#ftp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>FTP协议</h2>
-<h3 id="_17"><a name="user-content-_17" href="#_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一些术语和基本概念、约定</h3>
-<ul>
-<li>文件传输协议（缩写：FTP）是用于在网络上进行文件传输的一套标准协议。它属于网络传输协议的应用层。</li>
-</ul>
-<h3 id="ftp_1"><a name="user-content-ftp_1" href="#ftp_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>FTP概况</h3>
-<ul>
-<li>FTP是一个8位的客户端-服务器协议，能操作任何类型的文件而不需要进一步处理，就像MIME或Unicode一样。</li>
-<li>FTP有着极高的延时，这意味着，从开始请求到第一次接收需求数据之间的时间，会非常长；并且不时的必须执行一些冗长的登陆进程。</li>
-<li>FTP服务一般运行在20和21两个端口。端口20用于在客户端和服务器之间传输数据流，而端口21用于传输控制流，并且是命令通向ftp服务器的进口。</li>
-<li>当数据通过数据流传输时，控制流处于空闲状态。而当控制流空闲很长时间后，客户端的防火墙会将其会话置为超时，这样当大量数据通过防火墙时，会产生一些问题。此虽然文件可以成功的传输，但因为控制会话会被防火墙断开；传输会产生一些错误。</li>
-<li>运行FTP服务的许多站点都开放匿名服务，匿名用户的用户名是：“anonymous”。这个帐号不需要密码。</li>
-<li>FTP是个有状态连接 必须追踪用户所在的文件树</li>
-</ul>
-<h3 id="ftp_2"><a name="user-content-ftp_2" href="#ftp_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>FTP缺点</h3>
-<ul>
-<li>密码和文件内容都使用明文传输，可能发生窃听。</li>
-<li>因为必须开放一个随机的端口以创建连接，当防火墙存在时，客户端很难过滤处于主动模式下的FTP流量。这个问题，通过使用被动模式的FTP，得到了很大解决。</li>
-<li>服务器可能会被告知连接一个第三方计算机的保留端口。</li>
-<li>此方式在需要传输文件数量很多的小文件时，性能不好。</li>
-</ul>
-<h3 id="_18"><a name="user-content-_18" href="#_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>主动和被动模式</h3>
-<p>FTP有两种使用模式：主动和被动。主动模式要求客户端和服务器端同时打开并且监听一个端口以创建连接。在这种情况下，客户端由于安装了防火墙会产生一些问题。所以，创立了被动模式。被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装了防火墙的问题。  </p>
-<p>一个主动模式的FTP连接创建要遵循以下步骤：</p>
-<ol>
-<li>客户端打开一个随机的端口（端口号大于1024，在这里，我们称它为x），同时一个FTP进程连接至服务器的21号命令端口。此时，该tcp连接的来源地端口为客户端指定的随机端口x，目的地端口（远程端口）为服务器上的21号端口。</li>
-<li>客户端开始监听端口（x+1），同时向服务器发送一个端口命令（通过服务器的21号命令端口），此命令告诉服务器客户端正在监听的端口号并且已准备好从此端口接收数据。这个端口就是我们所知的数据端口。</li>
-<li>服务器打开20号源端口并且创建和客户端数据端口的连接。此时，来源地的端口为20，远程数据(目的地)端口为（x+1）。</li>
-<li>客户端通过本地的数据端口创建一个和服务器20号端口的连接，然后向服务器发送一个应答，告诉服务器它已经创建好了一个连接。</li>
-</ol>
-<h2 id="smtp"><a name="user-content-smtp" href="#smtp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>SMTP协议</h2></article></body></html>
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>2.md</title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}html { font-size: 14px; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: rgb(181, 214, 252); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: auto; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+.typora-export #write { margin: 0px auto; }
+#write > p:first-child, #write > ul:first-child, #write > ol:first-child, #write > pre:first-child, #write > blockquote:first-child, #write > div:first-child, #write > table:first-child { margin-top: 30px; }
+#write li > table:first-child { margin-top: -20px; }
+img { max-width: 100%; }
+input, button, select, textarea { color: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+::before, ::after, * { box-sizing: border-box; }
+#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write div, #write pre { width: inherit; }
+#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6 { position: relative; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0rem; -webkit-margin-after: 0rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
+a { cursor: pointer; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+pre { white-space: pre-wrap; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; position: relative !important; background: inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
+.footnotes + .footnotes { margin-top: -1em; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; background: transparent; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li p, li .mathjax-block { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
+@media print { 
+  html, body { height: 100%; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid-page; orphans: 2; }
+  p { orphans: 4; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0mm; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre-wrap; display: block; background: rgb(204, 204, 204); }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+.mathjax-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: none; box-shadow: none; }
+.task-list { list-style-type: none; }
+.task-list-item { position: relative; padding-left: 1em; }
+.task-list-item input { position: absolute; top: 0px; left: 0px; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc::after, .md-toc-content::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+.md-tag { opacity: 0.5; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: monospace; }
+code { text-align: left; }
+h1 .md-tag, h2 .md-tag, h3 .md-tag, h4 .md-tag, h5 .md-tag, h6 .md-tag { font-weight: initial; opacity: 0.35; }
+a.md-header-anchor.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: none !important; text-decoration: initial !important; text-shadow: initial !important; background: transparent !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0em; position: relative; text-indent: 0px; max-width: none; max-height: none; min-width: 0px; min-height: 0px; width: 100%; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: normal; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: normal; src: local("Open Sans Regular"), url("./github/400.woff") format("woff"); }
+@font-face { font-family: "Open Sans"; font-style: italic; font-weight: normal; src: local("Open Sans Italic"), url("./github/400i.woff") format("woff"); }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: bold; src: local("Open Sans Bold"), url("./github/700.woff") format("woff"); }
+@font-face { font-family: "Open Sans"; font-style: italic; font-weight: bold; src: local("Open Sans Bold Italic"), url("./github/700i.woff") format("woff"); }
+html { font-size: 16px; }
+body { font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); line-height: 1.6; }
+#write { max-width: 860px; margin: 0px auto; padding: 20px 30px 100px; }
+#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
+body > :first-child { margin-top: 0px !important; }
+body > :last-child { margin-bottom: 0px !important; }
+a { color: rgb(65, 131, 196); }
+h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
+h1 tt, h1 code { font-size: inherit; }
+h2 tt, h2 code { font-size: inherit; }
+h3 tt, h3 code { font-size: inherit; }
+h4 tt, h4 code { font-size: inherit; }
+h5 tt, h5 code { font-size: inherit; }
+h6 tt, h6 code { font-size: inherit; }
+h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+h3 { font-size: 1.5em; line-height: 1.43; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 1em; color: rgb(119, 119, 119); }
+p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
+li > ol, li > ul { margin: 0px; }
+hr { height: 4px; padding: 0px; margin: 16px 0px; border-width: 0px 0px 1px; border-style: none none solid; overflow: hidden; box-sizing: content-box; border-bottom-color: rgb(221, 221, 221); background-color: rgb(231, 231, 231); }
+body > h2:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child + h2 { margin-top: 0px; padding-top: 0px; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0px; }
+li p.first { display: inline-block; }
+ul, ol { padding-left: 30px; }
+ul:first-child, ol:first-child { margin-top: 0px; }
+ul:last-child, ol:last-child { margin-bottom: 0px; }
+blockquote { border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); padding: 0px 15px; color: rgb(119, 119, 119); }
+blockquote blockquote { padding-right: 0px; }
+table { padding: 0px; word-break: initial; }
+#write { overflow-x: auto; }
+table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); margin: 0px; padding: 0px; background-color: white; }
+table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+table tr th { font-weight: bold; border: 1px solid rgb(204, 204, 204); text-align: left; margin: 0px; padding: 6px 13px; }
+table tr td { border: 1px solid rgb(204, 204, 204); text-align: left; margin: 0px; padding: 6px 13px; }
+table tr th:first-child, table tr td:first-child { margin-top: 0px; }
+table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); }
+.md-fences, code, tt { border: 1px solid rgb(221, 221, 221); border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 4px 0px; font-size: 0.9em; background-color: rgb(248, 248, 248); }
+.md-fences { margin-bottom: 15px; margin-top: 15px; padding: 8px 1em 6px; }
+.task-list { padding-left: 0px; }
+.task-list-item { padding-left: 32px; }
+.task-list-item input { top: 3px; left: 8px; }
+@media screen and (min-width: 914px) { 
+}
+@media print { 
+  html { font-size: 13px; }
+  table, pre { break-inside: avoid; }
+  pre { word-wrap: break-word; }
+}
+.md-fences { background-color: rgb(248, 248, 248); }
+#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; background-color: rgb(247, 247, 247); }
+.mathjax-block > .code-tooltip { bottom: 0.375rem; }
+#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
+#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+.md-image > .md-meta { border: 1px solid rgb(221, 221, 221); border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 4px 0px; font-size: 0.9em; color: inherit; background-color: rgb(248, 248, 248); }
+.md-tag { color: inherit; }
+.md-toc { margin-top: 20px; padding-bottom: 20px; }
+#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
+#typora-quick-open-item { border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; background-color: rgb(250, 250, 250); }
+.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.117647); }
+header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+
+
+
+
+
+
+</style>
+</head>
+<body class='typora-export ' >
+<div  id='write'  class = 'is-node'><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="c444"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c444">应用层协议</a></span><span class="md-toc-item md-toc-h2" data-ref="c6"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c6">应用层协议的结构与分类应用</a></span><span class="md-toc-item md-toc-h2" data-ref="c27"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c27">因特网提供的运输服务</a></span><span class="md-toc-item md-toc-h3" data-ref="c28"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c28">因特网应用需求</a></span><span class="md-toc-item md-toc-h3" data-ref="c31"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c31">TCP服务</a></span><span class="md-toc-item md-toc-h4" data-ref="c32"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c32">特点</a></span><span class="md-toc-item md-toc-h3" data-ref="c46"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c46">UDP服务</a></span><span class="md-toc-item md-toc-h4" data-ref="c47"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c47">特点</a></span><span class="md-toc-item md-toc-h3" data-ref="c58"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c58">注意</a></span><span class="md-toc-item md-toc-h3" data-ref="c61"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c61">对比</a></span><span class="md-toc-item md-toc-h3" data-ref="c64"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c64">应用层支持的运输层表</a></span><span class="md-toc-item md-toc-h2" data-ref="c67"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c67">HTTP协议</a></span><span class="md-toc-item md-toc-h3" data-ref="c68"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c68">一些web术语和基本概念、约定</a></span><span class="md-toc-item md-toc-h3" data-ref="c76"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c76">HTTP概况</a></span><span class="md-toc-item md-toc-h3" data-ref="c90"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c90">HTTP非持久连接</a></span><span class="md-toc-item md-toc-h3" data-ref="c98"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c98">HTTP持久连接</a></span><span class="md-toc-item md-toc-h3" data-ref="c135"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c135">HTTP请求报文格式</a></span><span class="md-toc-item md-toc-h4" data-ref="c136"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c136">请求报文</a></span><span class="md-toc-item md-toc-h4" data-ref="c143"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c143">请求方法</a></span><span class="md-toc-item md-toc-h4" data-ref="c171"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c171">请求URL</a></span><span class="md-toc-item md-toc-h4" data-ref="c196"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c196">其他字段</a></span><span class="md-toc-item md-toc-h3" data-ref="c240"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c240">HTTP响应报文形式</a></span><span class="md-toc-item md-toc-h4" data-ref="c241"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c241">应答报文</a></span><span class="md-toc-item md-toc-h4" data-ref="c245"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c245">状态行</a></span><span class="md-toc-item md-toc-h4" data-ref="c263"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c263">响应码</a></span><span class="md-toc-item md-toc-h4" data-ref="c344"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c344">消息报头</a></span><span class="md-toc-item md-toc-h2" data-ref="c374"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c374">FTP协议</a></span><span class="md-toc-item md-toc-h3" data-ref="c375"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c375">一些术语和基本概念、约定</a></span><span class="md-toc-item md-toc-h3" data-ref="c380"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c380">FTP概况</a></span><span class="md-toc-item md-toc-h3" data-ref="c400"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c400">FTP缺点</a></span><span class="md-toc-item md-toc-h3" data-ref="c414"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c414">主动和被动模式</a></span><span class="md-toc-item md-toc-h2" data-ref="c432"><a class="md-toc-inner" style="cursor: pointer;" href="#header-c432">SMTP协议</a></span></p></div><p></p><h1><a name='header-c444' class='md-header-anchor '></a>应用层协议</h1><h2><a name='header-c6' class='md-header-anchor '></a>应用层协议的结构与分类应用</h2><ul><li><p>应用程序体系结构包括<strong>客户端-服务器架构</strong>和<strong>P2P体系结构</strong></p></li><li><p>客户端-服务器架构</p><ul><li>发起通信的进程叫客户</li><li>等待联系的进程叫服务器</li><li>发送和接受报文的接口叫套接字</li><li>通过IP来寻得主机，端口号区分主机上的不同应用程序</li></ul></li></ul><h2><a name='header-c27' class='md-header-anchor '></a>因特网提供的运输服务</h2><h3><a name='header-c28' class='md-header-anchor '></a>因特网应用需求</h3><p><img src='./images/应用层协议对应的运输协议.png' alt='应用层协议对应的运输协议.png' /></p><h3><a name='header-c31' class='md-header-anchor '></a>TCP服务</h3><h4><a name='header-c32' class='md-header-anchor '></a>特点</h4><ol><li><strong>面向连接</strong>：发送报文之前经过三次握手，然后建立一条<strong>全双工</strong>连接，发送报文，再销毁连接</li><li><strong>可靠</strong>：非常可靠，没有字节丢失和冗余</li><li><strong>有拥塞机制</strong>：不一定给自己带来好处，但对整个网络环境友好</li><li><code>TCP</code>不安全，但有自己的加强版——<code>SSL</code>协议</li></ol><h3><a name='header-c46' class='md-header-anchor '></a>UDP服务</h3><h4><a name='header-c47' class='md-header-anchor '></a>特点</h4><ol><li><strong>轻量级</strong>：最小化服务，最小化成本</li><li>不可靠：可能发送包丢失和乱序</li><li><strong>没有拥塞机制</strong>：可以以任何速率向网络层注入数据</li></ol><h3><a name='header-c58' class='md-header-anchor '></a>注意</h3><p>不管是<code>UDP</code>还是<code>TCP</code>，都不提供弹性带宽（吞吐量）保证和时间敏感保证。</p><h3><a name='header-c61' class='md-header-anchor '></a>对比</h3><p><img src='./images/TCP与UDP.png' alt='TCP与UDP.png' /></p><h3><a name='header-c64' class='md-header-anchor '></a>应用层支持的运输层表</h3><p><img src='./images/应用层协议对应的运输协议.png' alt='应用层协议对应的运输协议.png' /></p><h2><a name='header-c67' class='md-header-anchor '></a>HTTP协议</h2><h3><a name='header-c68' class='md-header-anchor '></a>一些web术语和基本概念、约定</h3><ul><li>web文档是由对象组成的。一个对象就是一个文件。对象一般由<code>URL</code>来定位。</li><li>URL：统一资源定位符，主要由两部分组成：一部分是主机名，另一部分是对象们的路径名，是因特网上标准的资源的地址</li></ul><h3><a name='header-c76' class='md-header-anchor '></a>HTTP概况</h3><ul><li><code>HTTP</code>一般使用<code>TCP</code>作为传输层协议（但HTTP协议中并没有规定必须使用它或它支持的层）</li><li><code>HTTP</code>是一个无状态协议：<code>HTTP</code>服务器不保存客户的任何信息。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li><li><code>HTTP</code>是一个无连接协议：限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li><li><code>HTTP</code>是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li></ul><h3><a name='header-c90' class='md-header-anchor '></a>HTTP非持久连接</h3><ul><li><code>HTTP</code> 0.9和1.0使用非持续连接</li><li>在非持续连接下每个tcp只连接一个web对象，连接在每个请求回应对后都会关闭</li></ul><h3><a name='header-c98' class='md-header-anchor '></a>HTTP持久连接</h3><ul><li><p><code>HTTP</code> 1.1+默认使用持续连接 1.0要加<code>Keep-alive</code>相应头</p></li><li><p>一个连接可被多个请求重复利用的保持连接机制被引入，显著地减少了请求延迟，因为客户不用在首次请求后再次进行TCP交互确认创建连接</p></li><li><p>优点</p><ul><li>较少的CPU和内存的使用（由于同时打开的连接的减少了）</li><li>允许请求和应答的HTTP管线化</li><li>降低网络阻塞 （TCP连接减少了）</li><li>减少了后续请求的延迟（无需再进行握手）</li><li>报告错误无需关闭TCP连接</li></ul></li><li><p>缺点</p><ul><li>对于现在的广泛普及的宽带连接来说，Keep-Alive也许并不像以前一样有用。web服务器会保持连接若干秒(Apache中默认15秒)，这与提高的性能相比也许会影响性能。</li><li>对于单个文件被不断请求的服务(例如图片存放网站)，Keep-Alive可能会极大的影响性能，因为它在文件被请求之后还保持了不必要的连接很长时间。</li></ul></li></ul><h3><a name='header-c135' class='md-header-anchor '></a>HTTP请求报文格式</h3><h4><a name='header-c136' class='md-header-anchor '></a>请求报文</h4><p>以下是一个典型的请求报文
+<img src='./images/http请求报文1.png' alt='http请求报文1.png' /></p><p>可以解析为
+<img src='./images/http请求报文2.png' alt='http请求报文2.png' /></p><h4><a name='header-c143' class='md-header-anchor '></a>请求方法</h4><ul><li><p><code>GET</code>		请求获取Request-URI所标识的资源</p><ul><li><p><code>POST</code>	在Request-URI所标识的资源后附加新的数据</p><ul><li><code>HEAD</code>请求获取由Request-URI所标识的资源的响应消息报头</li><li><code>PUT</code>请求服务器存储一个资源，并用Request-URI作为其标识</li></ul></li><li><p><code>DELETE</code>请求服务器删除Request-URI所标识的资源</p></li><li><p><code>TRACE</code>请求服务器回送收到的请求信息，主要用于测试或诊断</p></li><li><p><code>CONNECT</code>保留将来使用</p></li><li><p><code>OPTIONS</code>请求查询服务器的性能，或者查询与资源相关的选项和需求</p></li></ul></li></ul><h4><a name='header-c171' class='md-header-anchor '></a>请求URL</h4><ul><li>统一资源定位符的标准格式如下：<br/>
+协议类型://服务器地址（必要时需加上端口号）/路径/文件名<br/></li><li>而<code>HTTP</code>的统一资源定位符将从因特网获取信息的五个基本元素包括在一个简单的地址中：</li></ul><ol><li>传送协议(http/https)。</li><li>服务器。（通常为域名，有时为IP地址）</li><li>端口号。（以数字方式表示，若为HTTP的预设值“:80”可省略）</li><li>路径。（以“/”字元区别路径中的每一个目录名称）</li><li>查询字符串(query string)。（GET模式的表单参数，以“?”字元为起点，每个参数以“&amp;”隔开，再以“=”分开参数名称与资料，通常以UTF8的URL编码，避开字元冲突的问题）</li></ol><h4><a name='header-c196' class='md-header-anchor '></a>其他字段</h4><ul><li>Accept：浏览器可接受的MIME类型。</li><li>Accept-Charset：浏览器可接受的字符集。</li><li>Accept-Encoding：浏览器能够进行解码的数据编码方式，比如<code>gzip</code>。<code>Servlet</code>能够向支持<code>gzip</code>的浏览器返回经gzip编码的HTML页面。许多情形下这可以减少5到10倍的下载时间。</li><li>Accept-Language：浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。</li><li>Authorization：授权信息，通常出现在对服务器发送的WWW-Authenticate头的应答中。</li><li>Connection：表示是否需要持久连接。HTTP1.1默认是<code>keep-alive</code></li><li>Content-Length：表示请求消息正文的长度。</li><li>Cookie：这是最重要的请求头信息之一</li><li>From：请求发送者的email地址，由一些特殊的Web客户程序使用，浏览器不会用到它。</li><li>Host：初始URL中的主机和端口。</li><li>If-Modified-Since：只有当所请求的内容在指定的日期之后又经过修改才返回它，否则返回304“Not Modified”应答。</li><li>Pragma：指定“no-cache”值表示服务器必须返回一个刷新后的文档，即使它是代理服务器而且已经有了页面的本地拷贝。</li><li>Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。</li><li>User-Agent：浏览器类型，如果Servlet返回的内容与浏览器类型有关则该值非常有用。</li></ul><h3><a name='header-c240' class='md-header-anchor '></a>HTTP响应报文形式</h3><h4><a name='header-c241' class='md-header-anchor '></a>应答报文</h4><p>HTTP响应由三个部分组成，分别是：状态行、消息报头、响应正文。以下是响应报文的基本形式：
+<img src='./images/http响应.jpg' alt='http响应.jpg' /></p><h4><a name='header-c245' class='md-header-anchor '></a>状态行</h4><p>状态行格式如下：
+HTTP-Version Status-Code Reason-Phrase CRLF
+其中：<br/></p><ul><li>HTTP-Version表示服务器HTTP协议的版本；</li><li>Status-Code表示服务器发回的响应状态代码；</li><li>Reason-Phrase表示状态代码的文本描述。</li><li>CRLF是换行</li></ul><h4><a name='header-c263' class='md-header-anchor '></a>响应码</h4><p>状态代码有三位数字组成，第一个数字定义了响应的类别，且有五种可能取值：</p><ul><li><p>1xx：指示信息--表示请求已接收，继续处理</p><ul><li>100 Continue 客户端应当继续发送请求的剩余部分。服务器必须在请求完成后向客户端发送一个最终响应。</li><li>101 Switching Protocols 服务器已经理解请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最后的空行后，服务器将会切换到在Upgrade消息头中定义的那些协议。</li></ul></li><li><p>2xx：成功--表示请求已被成功接收、理解、接受</p><ul><li>204 No Content 服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。响应可能通过实体头部的形式，返回新的或更新后的元信息。</li><li>206 Partial Content 服务器已经成功处理了部分GET请求。类似于FlashGet或者迅雷这类的HTTP 下载工具都是使用此类响应实现断点续传或者将一个大文档分解为多个下载段同时下载。该请求必须包含Range头信息来指示客户端希望得到的内容范围，并且可能包含If-Range来作为请求条件。</li></ul></li><li><p>3xx：重定向--要完成请求必须进行更进一步的操作</p><ul><li>300 Multiple Choices 被请求的资源有一系列可供选择的回馈信息，用户或浏览器能够自行选择一个首选的地址进行重定向。</li><li>301 Moved Permanently 被请求的资源已永久移动到新位置，将来任何对此资源的引用都应使用本响应返回的若干个URI之一。</li></ul></li><li><p>4xx：客户端错误--请求有语法错误或请求无法实现</p><ul><li>400 Bad Request 由于包含语法错误，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。</li><li>401 Unauthorized 当前请求需要用户验证。该响应必须包含一个WWW-Authenticate信息头用以询问用户信息。</li><li>403 Forbidden 服务器已经理解请求，但是拒绝执行它。</li><li>404 Not Found 请求失败，请求所希望得到的资源未被在服务器上发现。</li><li>407 Proxy Authentication Required 与401响应类似，只不过客户端必须在代理服务器上进行身份验证。</li><li>410 Gone 被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。这样的状况应当被认为是永久性的。</li><li>421 There are too many connections from your internet address 从当前客户端所在的IP地址到服务器的连接数超过了服务器许可的最大范围</li><li>426 Upgrade Required 客户端应当切换到TLS/1.0。</li></ul></li><li><p>5xx：服务器端错误--服务器未能实现合法的请求</p><ul><li>500 Internal Server Error 服务器遇到状况，无法完成对请求的处理。一般来说，这个问题都会在服务器的程序码出错时出现。</li><li>501 Not Implemented 服务器无法识别请求的方法，并且无法支持其对任何资源的请求。</li><li>502 Bad Gateway 作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</li><li>503 Service Unavailable 由于临时的服务器维护或者过载，服务器当前无法处理请求。</li><li>504 Gateway Timeout 作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。注意：某些代理服务器在DNS查询超时时会返回400或者500错误。</li></ul></li></ul><h4><a name='header-c344' class='md-header-anchor '></a>消息报头</h4><ul><li>Location 响应报头域用于重定向接受者到一个新的位置。Location响应报头域常用在更换域名的时候。</li><li>Server响应报头域包含了服务器用来处理请求的软件信息。与User-Agent请求报头域是相对应的。</li><li>WWW-Authenticate 必须被包含在401（未授权的）响应消息中，客户端收到401响应消息时候，并发送Authorization报头域请求服务器对其进行验证时，服务端响应报头就包含该报头域。</li><li>Content-Encoding 它的值指示了已经被应用到实体正文的附加内容的编码，因而要获得Content-Type报头域中所引用的媒体类型，必须采用相应的解码机制。Content-Encoding这样用于记录文档的压缩方法，eg：Content-Encoding：gzip</li><li>Content-Language 实体报头域描述了资源所用的自然语言。没有设置该域则认为实体内容将提供给所有的语言阅读
+者。</li><li>Content-Length 实体报头域用于指明实体正文的长度，以字节方式存储的十进制数字来表示。</li><li>Content-Type实体报头域用语指明发送给接收者的实体正文的媒体类型。</li><li>Last-Modified实体报头域用于指示资源的最后修改日期和时间。</li><li>Expires实体报头域给出响应过期的日期和时间。</li></ul><h2><a name='header-c374' class='md-header-anchor '></a>FTP协议</h2><h3><a name='header-c375' class='md-header-anchor '></a>一些术语和基本概念、约定</h3><ul><li>文件传输协议（缩写：FTP）是用于在网络上进行文件传输的一套标准协议。它属于网络传输协议的应用层。</li></ul><h3><a name='header-c380' class='md-header-anchor '></a>FTP概况</h3><ul><li>FTP是一个8位的客户端-服务器协议，能操作任何类型的文件而不需要进一步处理，就像MIME或Unicode一样。</li><li>FTP有着极高的延时，这意味着，从开始请求到第一次接收需求数据之间的时间，会非常长；并且不时的必须执行一些冗长的登陆进程。</li><li>FTP服务一般运行在20和21两个端口。端口20用于在客户端和服务器之间传输数据流，而端口21用于传输控制流，并且是命令通向ftp服务器的进口。</li><li>当数据通过数据流传输时，控制流处于空闲状态。而当控制流空闲很长时间后，客户端的防火墙会将其会话置为超时，这样当大量数据通过防火墙时，会产生一些问题。此虽然文件可以成功的传输，但因为控制会话会被防火墙断开；传输会产生一些错误。</li><li>运行FTP服务的许多站点都开放匿名服务，匿名用户的用户名是：“anonymous”。这个帐号不需要密码。</li><li>FTP是个有状态连接 必须追踪用户所在的文件树</li></ul><h3><a name='header-c400' class='md-header-anchor '></a>FTP缺点</h3><ul><li>密码和文件内容都使用明文传输，可能发生窃听。</li><li>因为必须开放一个随机的端口以创建连接，当防火墙存在时，客户端很难过滤处于主动模式下的FTP流量。这个问题，通过使用被动模式的FTP，得到了很大解决。</li><li>服务器可能会被告知连接一个第三方计算机的保留端口。</li><li>此方式在需要传输文件数量很多的小文件时，性能不好。</li></ul><h3><a name='header-c414' class='md-header-anchor '></a>主动和被动模式</h3><p>FTP有两种使用模式：主动和被动。主动模式要求客户端和服务器端同时打开并且监听一个端口以创建连接。在这种情况下，客户端由于安装了防火墙会产生一些问题。所以，创立了被动模式。被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装了防火墙的问题。<br/></p><p>一个主动模式的FTP连接创建要遵循以下步骤：</p><ol><li>客户端打开一个随机的端口（端口号大于1024，在这里，我们称它为x），同时一个FTP进程连接至服务器的21号命令端口。此时，该tcp连接的来源地端口为客户端指定的随机端口x，目的地端口（远程端口）为服务器上的21号端口。</li><li>客户端开始监听端口（x+1），同时向服务器发送一个端口命令（通过服务器的21号命令端口），此命令告诉服务器客户端正在监听的端口号并且已准备好从此端口接收数据。这个端口就是我们所知的数据端口。</li><li>服务器打开20号源端口并且创建和客户端数据端口的连接。此时，来源地的端口为20，远程数据(目的地)端口为（x+1）。</li><li>客户端通过本地的数据端口创建一个和服务器20号端口的连接，然后向服务器发送一个应答，告诉服务器它已经创建好了一个连接。</li></ol><h2><a name='header-c432' class='md-header-anchor '></a>SMTP协议</h2><p></p></div>
+</body>
+</html>
