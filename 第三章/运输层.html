@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>运输层.md</title><link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}html { font-size: 14px; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: rgb(181, 214, 252); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: auto; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+.typora-export #write { margin: 0px auto; }
+#write > p:first-child, #write > ul:first-child, #write > ol:first-child, #write > pre:first-child, #write > blockquote:first-child, #write > div:first-child, #write > table:first-child { margin-top: 30px; }
+#write li > table:first-child { margin-top: -20px; }
+img { max-width: 100%; }
+input, button, select, textarea { color: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+::before, ::after, * { box-sizing: border-box; }
+#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write div, #write pre { width: inherit; }
+#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6 { position: relative; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0rem; -webkit-margin-after: 0rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
+a { cursor: pointer; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+pre { white-space: pre-wrap; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; position: relative !important; background: inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
+.footnotes + .footnotes { margin-top: -1em; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; background: transparent; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li p, li .mathjax-block { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
+@media print { 
+  html, body { height: 100%; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid-page; orphans: 2; }
+  p { orphans: 4; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0mm; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre-wrap; display: block; background: rgb(204, 204, 204); }
+p .md-image:only-child, p img:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+.mathjax-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: none; box-shadow: none; }
+.task-list { list-style-type: none; }
+.task-list-item { position: relative; padding-left: 1em; }
+.task-list-item input { position: absolute; top: 0px; left: 0px; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc::after, .md-toc-content::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+.md-tag { opacity: 0.5; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: monospace; }
+code { text-align: left; }
+h1 .md-tag, h2 .md-tag, h3 .md-tag, h4 .md-tag, h5 .md-tag, h6 .md-tag { font-weight: initial; opacity: 0.35; }
+a.md-header-anchor.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: none !important; text-decoration: initial !important; text-shadow: initial !important; background: transparent !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0em; position: relative; text-indent: 0px; max-width: none; max-height: none; min-width: 0px; min-height: 0px; width: 100%; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: normal; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+
+
+@font-face { font-family: "PT Serif"; font-style: normal; font-weight: normal; src: local("PT Serif"), local("PTSerif-Regular"), url("./newsprint/PT_Serif-Web-Regular.ttf"); }
+@font-face { font-family: "PT Serif"; font-style: italic; font-weight: normal; src: local("PT Serif"), local("PTSerif-Italic"), url("./newsprint/PT_Serif-Web-Italic.ttf"); }
+@font-face { font-family: "PT Serif"; font-style: normal; font-weight: bold; src: local("PT Serif"), local("PTSerif-Bold"), url("./newsprint/PT_Serif-Web-Bold.ttf"); }
+@font-face { font-family: "PT Serif"; font-style: italic; font-weight: bold; src: local("PT Serif"), local("PTSerif-BoldItalic"), url("./newsprint/PT_Serif-Web-BoldItalic.ttf"); }
+html { font-size: 16px; }
+html, body { font-family: "PT Serif", "Times New Roman", Times; color: rgb(31, 9, 9); line-height: 1.5em; background-color: rgb(243, 242, 238); }
+#write { max-width: 40em; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote::before, blockquote::after, q::before, q::after { content: none; }
+table { border-collapse: collapse; border-spacing: 0px; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+h1 { font-size: 1.875em; line-height: 1.6em; margin-top: 2em; }
+h2, h3 { font-size: 1.3125em; line-height: 1.15; margin-top: 2.28571em; margin-bottom: 1.15em; }
+h3 { font-weight: normal; }
+h4 { font-size: 1.125em; margin-top: 2.67em; }
+h5, h6 { font-size: 1em; }
+h1 { border-bottom-width: 1px; border-bottom-style: solid; margin-bottom: 1.875em; padding-bottom: 0.8125em; }
+a { text-decoration: none; color: rgb(6, 85, 136); }
+a:hover, a:active { text-decoration: underline; }
+p, blockquote, .md-fences { margin-bottom: 1.5em; }
+h1, h2, h3, h4, h5, h6 { margin-bottom: 1.5em; }
+blockquote { font-style: italic; border-left-width: 5px; border-left-style: solid; margin-left: 2em; padding-left: 1em; }
+ul, ol { margin: 0px 0px 1.5em 1.5em; }
+ol li { list-style-type: decimal; list-style-position: outside; }
+ul li { list-style-type: disc; list-style-position: outside; }
+.md-meta, .md-before, .md-after { color: rgb(153, 153, 153); }
+table { margin-bottom: 1.5em; font-size: 1em; }
+thead th, tfoot th { padding: 0.25em 0.25em 0.25em 0.4em; text-transform: uppercase; }
+th { text-align: left; }
+td { vertical-align: top; padding: 0.25em 0.25em 0.25em 0.4em; }
+code, .md-fences { padding-left: 1ch; padding-right: 1ch; background-color: rgb(218, 218, 218); }
+.md-fences { margin-left: 2em; margin-bottom: 3em; }
+.md-fences .CodeMirror.CodeMirror-wrap { top: -0.8em; }
+pre, code, tt { font-size: 0.875em; line-height: 1.71428em; }
+h1 { line-height: 1.3em; font-weight: normal; margin-bottom: 0.5em; }
+p + ul, p + ol { margin-top: -1em; }
+h3 + ul, h4 + ul, h5 + ul, h6 + ul, h3 + ol, h4 + ol, h5 + ol, h6 + ol { margin-top: 0.5em; }
+li > ul, li > ol { margin-top: inherit; }
+h2, h3 { margin-bottom: 0.75em; }
+hr { border-style: none none solid; border-color: initial; border-bottom-width: 1px; }
+h1 { border-color: rgb(197, 197, 197); }
+blockquote { border-color: rgb(186, 186, 186); color: rgb(101, 101, 101); }
+thead.md-table-edit { background-color: transparent; }
+thead { background-color: rgb(218, 218, 218); }
+tr:nth-child(2n) { background: rgb(232, 231, 231); }
+hr { border-color: rgb(197, 197, 197); }
+.task-list { padding-left: 1rem; }
+.task-list-item { padding-left: 1.5rem; list-style-type: none; }
+.task-list-item input::before { content: "√"; display: inline-block; width: 1.25rem; height: 1.6rem; vertical-align: middle; text-align: center; color: rgb(221, 221, 221); background-color: rgb(243, 242, 238); }
+.task-list-item input:checked::before, .task-list-item input[checked]::before { color: inherit; }
+#write pre.md-meta-block { min-height: 1.875rem; color: rgb(85, 85, 85); border: 0px; margin-left: 1em; margin-top: 1em; background: transparent; }
+.md-image > .md-meta { color: rgb(155, 81, 70); }
+.md-expand.md-image > .md-meta { background-color: rgba(255, 255, 255, 0.65098); }
+.md-image > .md-meta { font-family: Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif; }
+#write > h3.md-focus::before { left: -2.5rem; color: rgb(153, 153, 153); border-color: rgb(153, 153, 153); }
+#write > h4.md-focus::before { left: -2.5rem; top: 0.25rem; color: rgb(153, 153, 153); border-color: rgb(153, 153, 153); }
+#write > h5.md-focus::before { left: -2.5rem; color: rgb(153, 153, 153); border-color: rgb(153, 153, 153); }
+#write > h6.md-focus::before { left: -2.5rem; top: 0.3125rem; color: rgb(153, 153, 153); border-color: rgb(153, 153, 153); }
+.md-toc:focus .md-toc-content { margin-top: 19px; }
+.md-toc-content:empty::before { color: rgb(6, 85, 136); }
+.md-toc-item { color: rgb(6, 85, 136); }
+#write div.md-toc-tooltip { background-color: rgb(243, 242, 238); }
+#outline-dropmenu { box-shadow: rgba(0, 0, 0, 0.372549) 0px 6px 12px; background-color: rgb(243, 242, 238); }
+.pin-outline #outline-dropmenu { box-shadow: none; border-right-width: 1px; border-right-style: dashed; background: inherit; }
+.pin-outline #outline-dropmenu:hover .outline-title-wrapper { border-left-width: 1px; border-left-style: dashed; }
+.outline-item:hover { border-left-width: 28px; border-left-style: solid; border-left-color: rgb(218, 218, 218); border-right-width: 18px; border-right-style: solid; border-right-color: rgb(218, 218, 218); background-color: rgb(218, 218, 218); }
+.typora-node .outline-item:hover { border-right-width: 28px; border-right-style: solid; border-right-color: rgb(218, 218, 218); }
+.outline-expander::before { content: ""; font-family: FontAwesome; font-size: 14px; top: 1px; }
+.outline-expander:hover::before, .outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.modal-content { background-color: rgb(243, 242, 238); }
+.auto-suggest-container ul li { list-style-type: none; }
+.megamenu-menu, #top-titlebar, #top-titlebar *, .megamenu-content { color: rgb(31, 9, 9); background: rgb(243, 242, 238); }
+.megamenu-menu-header { border-bottom-width: 1px; border-bottom-style: dashed; border-bottom-color: rgb(32, 43, 51); }
+.megamenu-menu { box-shadow: none; border-right-width: 1px; border-right-style: dashed; }
+header, .context-menu, .megamenu-content, footer { font-family: "PT Serif", "Times New Roman", Times; color: rgb(31, 9, 9); }
+#megamenu-back-btn { color: rgb(31, 9, 9); border-color: rgb(31, 9, 9); }
+.megamenu-menu-header #megamenu-menu-header-title::before { color: rgb(31, 9, 9); }
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active { color: inherit; background-color: rgb(232, 231, 223); }
+.long-btn:hover { background-color: rgb(232, 231, 223); }
+#recent-file-panel tbody tr:nth-child(2n-1) { background-color: transparent !important; }
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) { color: inherit; }
+.megamenu-menu-panel .btn { background-color: rgb(210, 209, 209); }
+.btn-default { background-color: transparent; }
+.typora-sourceview-on #toggle-sourceview-btn, .show-word-count #footer-word-count { background: rgb(199, 197, 197); }
+#typora-quick-open { background-color: inherit; }
+.md-diagram-panel { margin-left: -1ch; margin-top: 24px; }
+
+
+
+
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-node'><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="c6"><a class="md-toc-inner" href="#header-c6">运输层协议</a></span><span class="md-toc-item md-toc-h2" data-ref="c7"><a class="md-toc-inner" href="#header-c7">概述与约定</a></span><span class="md-toc-item md-toc-h3" data-ref="c51"><a class="md-toc-inner" href="#header-c51">概述</a></span><span class="md-toc-item md-toc-h3" data-ref="c60"><a class="md-toc-inner" href="#header-c60">运输层和网络层的关系</a></span><span class="md-toc-item md-toc-h3" data-ref="c182"><a class="md-toc-inner" href="#header-c182">因特网中的运输层</a></span><span class="md-toc-item md-toc-h4" data-ref="c199"><a class="md-toc-inner" href="#header-c199">预备知识---IP协议</a></span><span class="md-toc-item md-toc-h4" data-ref="c192"><a class="md-toc-inner" href="#header-c192">TCP和UDP的责任</a></span><span class="md-toc-item md-toc-h2" data-ref="c196"><a class="md-toc-inner" href="#header-c196">多路复用机制</a></span><span class="md-toc-item md-toc-h3" data-ref="c301"><a class="md-toc-inner" href="#header-c301">概述</a></span><span class="md-toc-item md-toc-h3" data-ref="c324"><a class="md-toc-inner" href="#header-c324">无连接的多路复用和多路分解</a></span><span class="md-toc-item md-toc-h3" data-ref="c385"><a class="md-toc-inner" href="#header-c385">面向连接的多路复用和多路分解</a></span><span class="md-toc-item md-toc-h3" data-ref="c473"><a class="md-toc-inner" href="#header-c473">Web服务器和TCP</a></span><span class="md-toc-item md-toc-h2" data-ref="c525"><a class="md-toc-inner" href="#header-c525">UDP协议：无连接运输</a></span><span class="md-toc-item md-toc-h3" data-ref="c528"><a class="md-toc-inner" href="#header-c528">概述</a></span><span class="md-toc-item md-toc-h3" data-ref="c568"><a class="md-toc-inner" href="#header-c568">优点</a></span><span class="md-toc-item md-toc-h3" data-ref="c604"><a class="md-toc-inner" href="#header-c604">应用层协议对应的运输层协议 </a></span><span class="md-toc-item md-toc-h3" data-ref="c610"><a class="md-toc-inner" href="#header-c610">对比 </a></span></p></div><h1><a name='header-c6' class='md-header-anchor '></a>运输层协议</h1><h2><a name='header-c7' class='md-header-anchor '></a>概述与约定</h2><h3><a name='header-c51' class='md-header-anchor '></a>概述</h3><ul><li>运输层协议为不同主机上的进程提供了<strong>逻辑通信</strong>功能</li><li>运输层协议在端系统（主机）里实现 而不是路由器</li><li>运输层中的分组(包)称之为<strong>报文段</strong></li><li>常见的运输层协议有TCP和UDP</li></ul><h3><a name='header-c60' class='md-header-anchor '></a>运输层和网络层的关系</h3><ul><li><p>拿送信做比方</p><ul><li>应用层报文 = 信封上的字符</li><li>进程 = 发件人和收件人</li><li>主机 = 发件人的家庭 收件人的家庭</li><li>运输层协议 = 邮递员</li><li>网络层协议 = 邮政服务</li></ul></li></ul><h3><a name='header-c182' class='md-header-anchor '></a>因特网中的运输层</h3><h4><a name='header-c199' class='md-header-anchor '></a>预备知识---IP协议</h4><ul><li>IP协议是一个网络层协议</li><li>IP的服务模型是“尽力而为”，但并不保证服务，是不可靠的</li><li>每台主机有一个IP地址</li></ul><h4><a name='header-c192' class='md-header-anchor '></a>TCP和UDP的责任</h4><p>共有的：</p><ul><li><strong>多路分解和多路复用</strong> ：将主机间的交互转化为进程间的交互</li><li><strong>差错检查</strong> ：通过报文段首部加入差错检查字段</li></ul><p>TCP独有：</p><ul><li><strong>可靠传输</strong> ： 通过流量控制、序号、确认、定时器</li><li><strong>拥塞机制</strong> ： 调节流量</li></ul><h2><a name='header-c196' class='md-header-anchor '></a>多路复用机制</h2><h3><a name='header-c301' class='md-header-anchor '></a>概述</h3><ul><li>一个进程有一个或者多个套接字</li><li>运输层实际上将数据交给了套接字们</li><li>每个套接字都有唯一的标识符 并且标志了它是UDP还是TCP</li><li>多路分解操作：在接收端，运输层协议检查报文头，读取接收套接字的信息，然后定向连接</li><li>多路复用操作：在发送端，运输层协议从不同套接字收集信息，生成头部信息并打包</li></ul><h3><a name='header-c324' class='md-header-anchor '></a>无连接的多路复用和多路分解</h3><ul><li><p>运输层的报文包含应用程序数据、源端口号、目的端口号和其他两个值</p></li><li><p>端口号是套接字的标志 一个UDP套接字由一个二元组构成，包含</p><ul><li>目的IP地址</li><li>目的端口号</li></ul></li><li><p>只要目的IP和端口号一致，UDP报文就会被送到同一个套接字</p></li></ul><h3><a name='header-c385' class='md-header-anchor '></a>面向连接的多路复用和多路分解</h3><ul><li><p>TCP套接字是一个四元组，包含：</p><ul><li>源IP</li><li>源端口号</li><li>目的IP</li><li>目的端口号</li></ul></li><li><p>主机用套接字的全部四个值来分解，也就是说就算目的相同，源不同也不会分配到同个套接字，除非TCP报文段提供了初始连接的请求</p></li><li><p>只有四个值都互相匹配，双方套接字才能互相发消息</p></li></ul><h3><a name='header-c473' class='md-header-anchor '></a>Web服务器和TCP</h3><ul><li>Web服务的默认端口是80</li><li>对于持续HTTP，持续期间使用同一对套接字</li><li>对于非持续HTTP，每一对请求/响应都创建一对套接字，再销毁</li><li>套接字和进程不一定一一对应，因为有线程的存在</li></ul><h2><a name='header-c525' class='md-header-anchor '></a>UDP协议：无连接运输</h2><h3><a name='header-c528' class='md-header-anchor '></a>概述</h3><ul><li>UDP无非只是给网络层协议加上了一点多路复用/分解服务而已</li><li>web应用选择UDP服务，几乎无异于直接和IP打交道</li><li>UDP没有握手过程，是无连接的</li><li>DNS是使用UDP服务的典型范例，如果没有收到响应，则会向另一DNS服务器发请求，直到发现怎么都没有响应</li></ul><h3><a name='header-c568' class='md-header-anchor '></a>优点</h3><ul><li>关于何时、发送什么数据的应用层控制更加精细</li><li>无需建立连接（握手）</li><li>无连接：不需要在主机中维护连接状态</li><li>分组首部仅仅8字节，而TCP需要20字节</li></ul><h3><a name='header-c604' class='md-header-anchor '></a>应用层协议对应的运输层协议 <img src='/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E5%BA%94%E7%9A%84%E8%BF%90%E8%BE%93%E5%8D%8F%E8%AE%AE.png' alt='应用层协议对应的运输协议' /></h3><h3><a name='header-c610' class='md-header-anchor '></a>对比 <img src='/home/hongjiyao_2014150120/Computer%20Netwoking/%E7%AC%AC%E4%BA%8C%E7%AB%A0/images/TCP%E4%B8%8EUDP.png' alt='TCP与UDP' /></h3><p></p></div>
+</body>
+</html>
